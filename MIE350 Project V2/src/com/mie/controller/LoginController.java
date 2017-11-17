@@ -41,9 +41,8 @@ public class LoginController extends HttpServlet {
 				StudentUser su = (StudentUser) user;	//cast to student so we may access student methods
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", su);
-				session.setAttribute("email", user.getUsername());
-				session.setAttribute("firstname", member.getFirstName());
-				session.setAttribute("lastname", member.getLastName());
+				session.setAttribute("email", user.getEmail());
+				session.setAttribute("userName", user.getNameOfUser());
 				/**
 				 * Redirect to the members-only home page.
 				 */

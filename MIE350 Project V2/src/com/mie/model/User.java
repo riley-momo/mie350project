@@ -45,7 +45,16 @@ public class User {
 		return isStudent;
 	}
 	
+	public void setIsStudent(boolean answer){
+		isStudent = answer;
+	}
+	
 	public boolean isRestaurantOwner(){
 		return isRestaurantOwner;
 	}
+	
+	public void setIsRestaurantOwner(boolean answer){
+		isRestaurantOwner = answer;
+	}
 }
+

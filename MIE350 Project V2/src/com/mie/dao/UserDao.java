@@ -17,7 +17,7 @@ import com.mie.util.*;
 public class UserDao {
 
 	/**
-	 * This class handles the User objects and the login component of the web
+	 * This class handles the Student User objects and the login component of the web
 	 * app.
 	 */
 	static Connection currentCon = null;
@@ -26,26 +26,31 @@ public class UserDao {
 	public static User login(User user) {
 
 		/**
-		 * This method attempts to find the member that is trying to log in by
+		 * This method attempts to find the student user that is trying to log in by
 		 * first retrieving the username and password entered by the user.
 		 */
 		Statement stmt = null;
 
-		String username = member.getUsername();
-		String password = member.getPassword();
+		String username = user.getNameOfUser();
+		String password = user.getPassword();
 
 		/**
-		 * Prepare a query that searches the members table in the database
+		 * Prepare a query that searches the Users table in the database
 		 * with the given username and password.
 		 */
-		String searchQuery = "select * from members where username='"
-				+ username + "' AND password='" + password + "'";
+		String searchStudentUserQuery = "SELECT * FROM Users WHERE NameOfUser = '"
+				+ username + "' AND Password = '" + password + "'";
 
+		String searchOwnerQuery = "SELECT * FROM Owner WHERE NameOfOwner = '"
+				+ username + "' AND Password = '" + password + "'";
+		
 		try {
 			// connect to DB
 			currentCon = DbUtil.getConnection();
 			stmt = currentCon.createStatement();
-			rs = stmt.executeQuery(searchQuery);
+			
+			//first check if this user is a student
+			rs = stmt.executeQuery(searchStudentUserQuery);
 			boolean more = rs.next();
 
 			/**
@@ -55,7 +60,25 @@ public class UserDao {
 			 */
 			
 			if (!more) {
-				member.setValid(false);
+				user.setIsStudent(false);
+				
+				// if this user is not a student, check if the user is an owner
+				rs = stmt.executeQuery(searchOwnerQuery);
+				boolean more2 = rs.next();
+				
+				//not an owner or a student
+				if(!more2){
+					user.setIsRestaurantOwner(false);
+				}
+				
+				//user is a restaurant owner
+				else if(more2){
+					String email = rs.getString("Email");
+					Owner owner = (Owner)user;
+					owner.setEmail(email);
+					owner.setIsRestaurantOwner(true);
+				}
+				
 			}
 
 			/**
@@ -64,21 +87,23 @@ public class UserDao {
 			 * the Member object.
 			 */
 			else if (more) {
-				String firstName = rs.getString("FirstName");
-				String lastName = rs.getString("LastName");
-
-				member.setFirstName(firstName);
-				member.setLastName(lastName);
-				member.setValid(true);
+				String email = rs.getString("Email");
+				String diet = rs.getString("DietRestrict");
+				
+				StudentUser student = (StudentUser) user;
+				
+				student.setEmail(email);
+				student.setDietaryRestriction(diet);
+				student.setIsStudent(true);
+				student.setIsRestaurantOwner(false);
 			}
 		}
-
 		catch (Exception ex) {
 			System.out.println("Log In failed: An Exception has occurred! "
 					+ ex);
 		}
 		/**
-		 * Return the Member object.
+		 * Return the user object.
 		 */
 		return member;
 

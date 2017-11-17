@@ -38,7 +38,7 @@ public class MenuDao {
 		 */
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("delete from students where studentid=?");
+					.prepareStatement("delete from Users where UserID = ?");
 			// Parameters start with 1
 			preparedStatement.setInt(1, studentid);
 			preparedStatement.executeUpdate();
@@ -50,8 +50,31 @@ public class MenuDao {
 
 	public void updateMenu(Menu menu) {
 		/**
-		 * This method updates a menu item into the database.
+		 * This method updates a menu item (based on its restaurant ID and name of item)
+		 * into the database.
 		 */
+		try{
+			int resID = menu.getRestaurantID();
+			String name = menu.getName();
+			
+			int calories = menu.getCalories();
+			String category = menu.getCategory();
+			String diet = menu.getDietary();
+			double price = menu.getPrice();
+			int promoKey = menu.getPromoKey();
+			
+			
+			String query = "UPDATE Menu SET Price = '"+ price + 
+					"', Category = '" + category + "', Calories = '" + calories + "', DietaryRestrictions = '" + 
+					diet + "', promoKey = '"+ promoKey + "' WHERE RestaurantID = '" + resID + "' AND ItemName = '"
+					+ name +"';";
+			
+			Statement stmt = connection.createStatement();
+			stmt.execute(query);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
