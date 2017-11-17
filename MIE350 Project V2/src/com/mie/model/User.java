@@ -6,6 +6,8 @@ public class User {
 	private String nameOfUser;
 	private String email;
 	private String password;
+	private boolean isStudent;
+	private boolean isRestaurantOwner;
 	
 	public String getNameOfUser() {
 		return nameOfUser;
@@ -37,5 +39,13 @@ public class User {
 	
 	public void setPassword(String newPassword){
 		password = newPassword;
+	}
+	
+	public boolean isStudent(){
+		return isStudent;
+	}
+	
+	public boolean isRestaurantOwner(){
+		return isRestaurantOwner;
 	}
 }

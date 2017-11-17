@@ -24,39 +24,43 @@ public class LoginController extends HttpServlet {
 		/**
 		 * Retrieve the entered username and password from the login.jsp form.
 		 */
-		Member member = new Member();
-		member.setUsername(request.getParameter("un"));
-		member.setPassword(request.getParameter("pw"));
+		User user = new User();
+		user.setEmail(request.getParameter("em"));
+		user.setPassword(request.getParameter("pw"));
 
 		try {
 			/**
 			 * Try to see if the member can log in.
 			 */
-			member = MemberDao.login(member);
+			user = UserDao.login(user);
 
 			/**
-			 * If the isValid value is true, assign session attributes to the
-			 * current member.
+			 *User will either be a student, an owner, or invalid. We direct them to the appropriate page based on these conditions
 			 */
-			if (member.isValid()) {
-
+			if (user.isStudent()) {
+				StudentUser su = (StudentUser) user;	//cast to student so we may access student methods
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionmember", member);
-				session.setAttribute("username", member.getUsername());
+				session.setAttribute("currentSessionUser", su);
+				session.setAttribute("email", user.getUsername());
 				session.setAttribute("firstname", member.getFirstName());
 				session.setAttribute("lastname", member.getLastName());
 				/**
 				 * Redirect to the members-only home page.
 				 */
-				response.sendRedirect("memberLogged.jsp");
+				response.sendRedirect("StudentLogged.jsp");
 
 				/**
 				 * Set a timeout variable of 900 seconds (15 minutes) for this
 				 * member who has logged into the system.
 				 */
 				session.setMaxInactiveInterval(900);
+				response.sendRedirect("OwnerLogged.jsp");
 			}
 
+			else if (user.isRestaurantOwner()){
+				//Redirect User to Restaurant Owner Page
+				Owner ou = (Owner) user;
+			}
 			else {
 				/**
 				 * Otherwise, redirect the user to the invalid login page and
@@ -64,6 +68,7 @@ public class LoginController extends HttpServlet {
 				 */
 				response.sendRedirect("invalidLogin.jsp");
 			}
+		
 		}
 
 		catch (Throwable theException) {

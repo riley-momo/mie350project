@@ -14,16 +14,16 @@ import com.mie.controller.*;
 
 import com.mie.util.*;
 
-public class MemberDao {
+public class UserDao {
 
 	/**
-	 * This class handles the Member objects and the login component of the web
+	 * This class handles the User objects and the login component of the web
 	 * app.
 	 */
 	static Connection currentCon = null;
 	static ResultSet rs = null;
 
-	public static Member login(Member member) {
+	public static User login(User user) {
 
 		/**
 		 * This method attempts to find the member that is trying to log in by
