@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
 
 		try {
 			/**
-			 * Try to see if the member can log in.
+			 * Try to see if the user can log in.
 			 */
 			user = UserDao.login(user);
 

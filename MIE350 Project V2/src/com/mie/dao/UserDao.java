@@ -75,8 +75,8 @@ public class UserDao {
 				else if(more2){
 					String email = rs.getString("Email");
 					Owner owner = (Owner)user;
-					owner.setEmail(email);
-					owner.setIsRestaurantOwner(true);
+					user.setEmail(email);
+					user.setIsRestaurantOwner(true);
 				}
 				
 			}
@@ -88,14 +88,14 @@ public class UserDao {
 			 */
 			else if (more) {
 				String email = rs.getString("Email");
-				String diet = rs.getString("DietRestrict");
 				
 				StudentUser student = (StudentUser) user;
 				
-				student.setEmail(email);
-				student.setDietaryRestriction(diet);
-				student.setIsStudent(true);
-				student.setIsRestaurantOwner(false);
+				user.setEmail(email);
+				user.setIsStudent(true);
+				user.setIsRestaurantOwner(false);
+				
+				
 			}
 		}
 		catch (Exception ex) {
@@ -105,7 +105,7 @@ public class UserDao {
 		/**
 		 * Return the user object.
 		 */
-		return member;
-
+		return user;
 	}
+	
 }
