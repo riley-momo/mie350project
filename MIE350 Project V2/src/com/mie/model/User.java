@@ -56,5 +56,20 @@ public class User {
 	public void setIsRestaurantOwner(boolean answer){
 		isRestaurantOwner = answer;
 	}
+	
+	//allows the user information to be printed to the screen
+	@Override
+	public String toString() {
+		
+		if(isRestaurantOwner){
+			return "Owner [User ID = " + ID + ", Name of User = " + nameOfUser + ", Email = " + email +
+					", Password = " + password + "]";
+		}
+		else if (isStudent){
+			return "Student [User ID = " + ID + ", Name of User = " + nameOfUser + ", Email = " + email +
+					", Password = " + password + "]";
+		}
+		else return "Not sure if this user is a student or an owner";
+	}
 }
 

@@ -17,18 +17,19 @@ import com.mie.util.*;
 public class UserDao {
 
 	/**
-	 * This class handles the Student User objects and the login component of the web
+	 * This class handles the Student and Owner User objects and the login component of the web
 	 * app.
 	 */
 	static Connection currentCon = null;
 	static ResultSet rs = null;
 
+	
+	/**
+	 * This method attempts to find the student user that is trying to log in by
+	 * first retrieving the username and password entered by the user.
+	 */
 	public static User login(User user) {
-
-		/**
-		 * This method attempts to find the student user that is trying to log in by
-		 * first retrieving the username and password entered by the user.
-		 */
+		
 		Statement stmt = null;
 
 		String username = user.getNameOfUser();
@@ -74,7 +75,6 @@ public class UserDao {
 				//user is a restaurant owner
 				else if(more2){
 					String email = rs.getString("Email");
-					Owner owner = (Owner)user;
 					user.setEmail(email);
 					user.setIsRestaurantOwner(true);
 				}
@@ -88,9 +88,6 @@ public class UserDao {
 			 */
 			else if (more) {
 				String email = rs.getString("Email");
-				
-				StudentUser student = (StudentUser) user;
-				
 				user.setEmail(email);
 				user.setIsStudent(true);
 				user.setIsRestaurantOwner(false);

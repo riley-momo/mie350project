@@ -12,7 +12,7 @@ import com.mie.util.DbUtil;
 
 public class MenuDao {
 	/**
-	 * This class handles all of the Student-related methods
+	 * This class handles all of the user-related methods
 	 * (add/update/delete/get).
 	 */
 
@@ -25,10 +25,28 @@ public class MenuDao {
 		connection = DbUtil.getConnection();
 	}
 
+	//need to make sure only owners can access this method
 	public void addMenu(Menu menu) {
 		/**
 		 * This method adds a new menu item to the database.
 		 */
+		try {
+			int resID = menu.getRestaurantID();
+			String name = menu.getName();
+			int calories = menu.getCalories();
+			String category = menu.getCategory();
+			String diet = menu.getDietary();
+			double price = menu.getPrice();
+			int promoKey = menu.getPromoKey();
+
+			String query = "INSERT INTO MENU VALUES (" + name + ", " + resID + ", " + price + ", " +
+							calories + ", " + category + ", " + diet + ", " + promoKey + ");" ;
+			
+			Statement stmt = connection.createStatement();
+			stmt.execute(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	
 	}
 
@@ -105,6 +123,8 @@ public class MenuDao {
 		return menus;
 	}
 
+	
+	// need to make sure the input is a prepared query. Otherwise input can be changed into a list of query parameters
 	public List<Menu> getFilteredItems(String query){
 	
 		/**
@@ -113,7 +133,7 @@ public class MenuDao {
 		List<Menu> menus = new ArrayList<Menu>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("query");
+			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
 				Menu menu = new Menu();
 				menu.setName(rs.getString("ItemName"));
