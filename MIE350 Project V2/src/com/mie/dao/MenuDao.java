@@ -26,7 +26,7 @@ public class MenuDao {
 	}
 
 	//need to make sure only owners can access this method
-	public void addMenu(Menu menu) {
+	public void addMenuItem(Menu menu) {
 		/**
 		 * This method adds a new menu item to the database.
 		 */
@@ -42,31 +42,38 @@ public class MenuDao {
 			String query = "INSERT INTO MENU VALUES (" + name + ", " + resID + ", " + price + ", " +
 							calories + ", " + category + ", " + diet + ", " + promoKey + ");" ;
 			
+			//if the menu item already exists, an error will be raised and this action will fail
+			
 			Statement stmt = connection.createStatement();
 			stmt.execute(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	
-	}
+	}	
 
-	public void deleteStudent(int studentid) {
+	//only owner can access
+	public void deleteMenuItem(Menu menu){
 		/**
-		 * This method deletes a student from the database.
+		 * This method deletes a menu item (based on its restaurant ID and name of item)
+		 * from the database.
 		 */
-		try {
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("delete from Users where UserID = ?");
-			// Parameters start with 1
-			preparedStatement.setInt(1, studentid);
-			preparedStatement.executeUpdate();
-
+		try{
+			int resID = menu.getRestaurantID();
+			String name = menu.getName();
+			
+			String query = "DELETE FROM Menu WHERE Name = '" + name + "' AND RestaurantID = " + resID + ";";
+			
+			Statement stmt = connection.createStatement();
+			stmt.execute(query);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
-	public void updateMenu(Menu menu) {
+	
+	//only owner can access
+	public void updateMenuItem(Menu menu) {
 		/**
 		 * This method updates a menu item (based on its restaurant ID and name of item)
 		 * into the database.
@@ -82,9 +89,9 @@ public class MenuDao {
 			int promoKey = menu.getPromoKey();
 			
 			
-			String query = "UPDATE Menu SET Price = '"+ price + 
-					"', Category = '" + category + "', Calories = '" + calories + "', DietaryRestrictions = '" + 
-					diet + "', promoKey = '"+ promoKey + "' WHERE RestaurantID = '" + resID + "' AND ItemName = '"
+			String query = "UPDATE Menu SET Price = "+ price + 
+					", Category = '" + category + "', Calories = " + calories + ", DietaryRestrictions = '" + 
+					diet + "', promoKey = "+ promoKey + " WHERE RestaurantID = " + resID + " AND ItemName = '"
 					+ name +"';";
 			
 			Statement stmt = connection.createStatement();
@@ -124,7 +131,6 @@ public class MenuDao {
 	}
 
 	
-	// need to make sure the input is a prepared query. Otherwise input can be changed into a list of query parameters
 	public List<Menu> getFilteredItems(String query){
 	
 		/**

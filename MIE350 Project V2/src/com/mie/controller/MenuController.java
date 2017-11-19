@@ -27,9 +27,9 @@ public class MenuController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static String INSERT = "/addStudent.jsp";
-	private static String EDIT = "/editStudent.jsp";
+	private static String EDIT = "/editMenuItems.jsp";
 	private static String LIST_MENU_ITEMS = "/listMenuItems.jsp";
-
+	private static String DELETE = "/deleteMenu.jsp";
 
 	private MenuDao dao;
 
@@ -59,7 +59,7 @@ public class MenuController extends HttpServlet {
 		String action = request.getParameter("action");
 
 		if (action.equalsIgnoreCase("delete")) {
-		//Deletion
+			forward = DELETE; //change in JSP
 		} else if (action.equalsIgnoreCase("insert")) {
 			forward = INSERT;
 		} else if (action.equalsIgnoreCase("edit")) {

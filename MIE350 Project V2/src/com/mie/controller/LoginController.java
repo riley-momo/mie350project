@@ -43,6 +43,7 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("currentSessionUser", su);
 				session.setAttribute("email", user.getEmail());
 				session.setAttribute("userName", user.getNameOfUser());
+				//session.setAttribute("dietRestrictions", );
 				/**
 				 * Redirect to the members-only home page.
 				 */
@@ -59,6 +60,11 @@ public class LoginController extends HttpServlet {
 			else if (user.isRestaurantOwner()){
 				//Redirect User to Restaurant Owner Page
 				Owner ou = (Owner) user;
+				
+				HttpSession session = request.getSession(true);
+				session.setAttribute("currentSessionUser", ou);
+				session.setAttribute("email", user.getEmail());
+				session.setAttribute("userName", user.getNameOfUser());
 			}
 			else {
 				/**
