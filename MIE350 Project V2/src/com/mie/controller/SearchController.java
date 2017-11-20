@@ -23,6 +23,7 @@ public class SearchController extends HttpServlet {
 	 * SEARCH_USER leads to the search results page.
 	 * 
 	 */
+	//test
 	private static final long serialVersionUID = 1L;
 	private static String SEARCH_MENU = "/searchMenuResult.jsp";
 	private MenuDao dao;
