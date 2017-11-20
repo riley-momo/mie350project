@@ -22,31 +22,49 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle2.css">
+
+
 </head>
+<!-- <style></style> -->
+
+
 <body>
-
-	<%@ include file="navbar.jsp"%>
-
+<%@ include file="navbar.jsp"%>
 
 
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
+<header class="intro-home">
+<div class= "intro-body">
+<div class="container-fluid text-center">
+		<div class="row content">		
+			<h1>Welcome to NeXtmeal</h1>
+			<br>
+				<p style="font-size: 24px;">The application that lets you find
+				the right meal, at the right time!</p>
+			<br>
+			<br>
+			<br>
+			<br>
+			
+			
+			<form action="mealPlanner.jsp">
+			<input type="submit" 
+						class="btn btn-info" value="Let's Get Started!" 
+						style="background-color: #da2926; border-color: rgba(0,0,0,.0001); font-size:18px;">
+			</form>		
+				<p>To learn more about this web application, <a href="about.jsp">Click here!</a></p>
 			</div>
-			<div class="col-sm-8 text-left">
-				<h1>Welcome</h1>
-				<p>INSERT WELCOME TEXT HERE</p>
-		
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
-		</div>
-	</div>
+	  
+<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
+	
+</div>
+</header>
 	<%@ include file="footer.jsp"%>
-
 
 </body>
 </html>
