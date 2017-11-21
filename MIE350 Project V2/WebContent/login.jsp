@@ -37,8 +37,8 @@
 				<h1 style="font-size: 88px;">Login</h1>
 				
 				<form action="LoginController">
-				<p style="font-size: 28px;">Username:</p>
-				<input type="text" name="un" style="font-size: 34px; margin-left:inherit; width:30%" />
+				<p style="font-size: 28px;">Email:</p>
+				<input type="text" name="em" style="font-size: 34px; margin-left:inherit; width:30%" />
 				<br>
 				<p style="font-size: 28px;">Password: </p>
 				<input	type="password" name="pw" style="font-size: 25px; margin-left:inherit; width: 30%"/>
