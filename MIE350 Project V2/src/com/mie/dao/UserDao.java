@@ -23,6 +23,12 @@ public class UserDao {
 	static Connection currentCon = null;
 	static ResultSet rs = null;
 
+	public UserDao() {
+		/**
+		 * Get the database connection.
+		 */
+		currentCon = DbUtil.getConnection();
+	}
 	
 	/**
 	 * This method attempts to find the student user that is trying to log in by
@@ -32,18 +38,18 @@ public class UserDao {
 		
 		Statement stmt = null;
 
-		String username = user.getNameOfUser();
+		String email = user.getEmail();
 		String password = user.getPassword();
 
 		/**
 		 * Prepare a query that searches the Users table in the database
 		 * with the given username and password.
 		 */
-		String searchStudentUserQuery = "SELECT * FROM Users WHERE NameOfUser = '"
-				+ username + "' AND Password = '" + password + "'";
+		String searchStudentUserQuery = "SELECT * FROM Student WHERE Email = '"
+				+ email + "' AND Password = '" + password + "';";
 
-		String searchOwnerQuery = "SELECT * FROM Owner WHERE NameOfOwner = '"
-				+ username + "' AND Password = '" + password + "'";
+		String searchOwnerQuery = "SELECT * FROM Owner WHERE Email = '"
+				+ email + "' AND Password = '" + password + "';";
 		
 		try {
 			// connect to DB
@@ -60,11 +66,14 @@ public class UserDao {
 			 * page when isValid is false.
 			 */
 			
+			//user is not a student
 			if (!more) {
 				user.setIsStudent(false);
 				
+				Statement stmt2 = currentCon.createStatement();
+				
 				// if this user is not a student, check if the user is an owner
-				rs = stmt.executeQuery(searchOwnerQuery);
+				rs = stmt2.executeQuery(searchOwnerQuery);
 				boolean more2 = rs.next();
 				
 				//not an owner or a student
@@ -74,8 +83,8 @@ public class UserDao {
 				
 				//user is a restaurant owner
 				else if(more2){
-					String email = rs.getString("Email");
-					user.setEmail(email);
+					String nameOfOwner = rs.getString("NameOfOwner");
+					user.setNameOfUser(nameOfOwner);
 					user.setIsRestaurantOwner(true);
 				}
 				
@@ -87,8 +96,8 @@ public class UserDao {
 			 * the Member object.
 			 */
 			else if (more) {
-				String email = rs.getString("Email");
-				user.setEmail(email);
+				String nameOfStudent = rs.getString("NameOfStudent");
+				user.setNameOfUser(nameOfStudent);
 				user.setIsStudent(true);
 				user.setIsRestaurantOwner(false);
 				

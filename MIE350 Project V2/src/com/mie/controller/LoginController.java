@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
 				 * member who has logged into the system.
 				 */
 				session.setMaxInactiveInterval(900);
-				response.sendRedirect("OwnerLogged.jsp");
+				
 			}
 
 			else if (user.isRestaurantOwner()){
@@ -65,6 +65,9 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("currentSessionUser", ou);
 				session.setAttribute("email", user.getEmail());
 				session.setAttribute("userName", user.getNameOfUser());
+				
+				response.sendRedirect("OwnerLogged.jsp");
+				session.setMaxInactiveInterval(900);
 			}
 			else {
 				/**
