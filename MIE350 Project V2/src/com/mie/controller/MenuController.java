@@ -46,14 +46,6 @@ public class MenuController extends HttpServlet {
 
 		/**
 		 * This class retrieves the appropriate 'action' found on the JSP pages:
-		 * 
-		 * - delete will direct the servlet to let the user delete a student in
-		 * the database. - insert will direct the servlet to let the user add a
-		 * new student to the database. - edit will direct the servlet to let
-		 * the user edit student information in the database. - listStudent will
-		 * direct the servlet to the public listing of all students in the
-		 * database. - listStudentAdmin will direct the servlet to the admin
-		 * listing of all students in the database.
 		 */
 		String forward = "";
 		String action = request.getParameter("action");

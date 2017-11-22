@@ -41,13 +41,18 @@ public class SearchController extends HttpServlet {
 		/**
 		 * This method handles retrieval of SQL query based on users filter
 		 */
-		String query = request.getParameter("query");
-
+		
+		//if the input is anything, set parameter to "*"
+		String calories = request.getParameter("calories");
+		String category = request.getParameter("category");
+		String diet = request.getParameter("dietaryRestriction");
+		String price = request.getParameter("price");
+		
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_MENU);
-		request.setAttribute("query", query);
-		request.setAttribute("menuItems", dao.getFilteredItems(query));
+		//request.setAttribute("query", query);
+		request.setAttribute("menuItems", dao.getFilteredItems(price, calories, category, diet));
 		/**
-		 * Redirect to the search results page after the list of students
+		 * Redirect to the search results page after the list of menus
 		 * matching the keywords has been retrieved.
 		 */
 

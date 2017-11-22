@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.mie.model.Menu;
 import com.mie.util.DbUtil;
 
@@ -131,11 +132,100 @@ public class MenuDao {
 	}
 
 	
-	public List<Menu> getFilteredItems(String query){
+	public List<Menu> getFilteredItems(String price, String calories, String category, String diet){
 	
 		/**
-		 * This method returns the list of menu items according to the supplied query
+		 * This method returns the list of menu items 
 		 */
+		String query = null;
+		
+		//filter everything
+		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price + " AND Calories <= " + calories
+					+ " AND DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
+		}
+		
+		//filter calories, category, diet
+		else if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Calories <= " + calories
+					+ " AND DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
+		}
+		
+		//filter calories, category, price
+		else if(!calories.equals("*") && !category.equals("*") && diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price + " AND Calories <= " + calories
+					+ "' AND Category = '" + category + "';";
+		}
+		
+		//filter category, diet, price
+		else if(calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price
+					+ " AND DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
+		}
+		
+		//filter calories, diet, price
+		else if(!calories.equals("*") && category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price + " AND Calories <= " + calories
+					+ " AND DietaryRestrictions = '" + diet + "';";
+		}
+		
+		//filter calories, category
+		else if(!calories.equals("*") && !category.equals("*") && diet.equals("*") && price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Calories <= " + calories + "' AND Category = '" + category + "';";
+		}
+
+		//filter calories, price
+		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price + " AND Calories <= " + calories + ";";
+		}
+		
+		//filter calories, diet
+		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Calories <= " + calories
+					+ " AND DietaryRestrictions = '" + diet + "';";
+		}
+		
+		//filter diet, price
+		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price 
+					+ " AND DietaryRestrictions = '" + diet + "';";
+		}
+		
+		//filter category, price
+		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price + " AND Category = '" + category + "';";
+		}
+		
+		//filter category, diet
+		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
+		}
+		
+		//filter calories only
+		else if(!calories.equals("*") && category.equals("*") && diet.equals("*") && price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Calories <= " + calories + ";";
+		}
+		
+		//filter category only
+		else if(calories.equals("*") && !category.equals("*") && diet.equals("*") && price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Category = '" + category + "';";
+		}
+		
+		//filter price only
+		else if(calories.equals("*") && category.equals("*") && diet.equals("*") && !price.equals("*")){
+			query = "SELECT * FROM Menu WHERE Price <= " + price + ";";
+		}
+		
+		//filter diet only
+		else if(calories.equals("*") && category.equals("*") && !diet.equals("*") && price.equals("*")){
+			query = "SELECT * FROM Menu WHERE DietaryRestrictions = '" + diet + "';";
+		}
+	
+		//filter nothing
+		else if(calories.equals("*") && category.equals("*") && diet.equals("*") && price.equals("*")){
+			query = "SELECT * FROM Menu;" ;
+		}
+		
 		List<Menu> menus = new ArrayList<Menu>();
 		try {
 			Statement statement = connection.createStatement();
