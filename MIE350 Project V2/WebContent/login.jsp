@@ -52,9 +52,9 @@
 				<p style="font-size:14px";>For demonstration purposes, please use the following
 				credentials:
 				<br>
-					Username: admin (or admin2, admin3, admin4, admin5)
+					Email: jeff@fake.com
 				<br>
-					Password: password</li>
+					Password: 123456</li>
 				</p>				
 			</div>
 		</div>

@@ -14,7 +14,7 @@
 %>
 
 <head>
-<title>MIE350 Sample Web App - Members-Only Home Page</title>
+<title>NeXtmeal Owners Home Page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -32,6 +32,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle2.css">
 </head>
 <body>
 
@@ -44,29 +45,39 @@
 		String firstname = (String) session.getAttribute("firstname");
 		String lastname = (String) session.getAttribute("lastname");
 	%>
-
+	
+	
+<header class="intro-loggedInHome">
 	<div class="container-fluid text-center">
+	
 		<div class="row content">
-			<%@ include file="sidebar_loggedin.jsp"%>
+<%-- 		<%@ include file="sidebar_loggedin.jsp"%> --%>
 			<div class="col-sm-8 text-left">
 
-				<h1>
-					Welcome,
-					<%=firstname%>
-					<%=lastname%>!
-				</h1>
+				<h1 style="color:black; font-size: 45px;">
+					Welcome back, <%=firstname%>. </h1>
+					
+				<p style="color:black;"> You are now logged in with administrative privileges.</p>
 
-
-				Welcome to the members-only page.
-
-				<h2>Members-Only Features</h2>
-				Members can do the following:
-
-				<ul>
-					<li><b>Add</b> students</li>
-					<li><b>Delete</b> students</li>
-					<li><b>Modify</b> student information</li>
+				<h3 style="color:black;">Feel free to</h3>
+				<ul style="color:black;">
+					<li><b>Add</b> items to a current menu</li>
+					<li><b>Delete</b> items from a menu</li>
+					<li><b>Modify</b> menu item information</li>
 				</ul>
+				<input type="button" 
+						class="btn btn-info" value="Account Settings" style="font-size: 18px;" >
+						<br>
+						<br>
+				<input type="button" 
+						class="btn btn-info" value="My Menu" style="font-size: 18px;" >
+				
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 			</div>
@@ -78,6 +89,7 @@
 
 	<%@ include file="footer.jsp"%>
 
+</header>
 
 </body>
 </html>
