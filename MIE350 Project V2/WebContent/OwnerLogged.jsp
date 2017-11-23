@@ -42,8 +42,7 @@
 		User user = (User) session.getAttribute("currentSessionUser");
 
 		String username = (String) session.getAttribute("userName");
-		String firstname = (String) session.getAttribute("firstname");
-		String lastname = (String) session.getAttribute("lastname");
+		String email= (String) session.getAttribute("email");
 	%>
 	
 	
@@ -55,7 +54,7 @@
 			<div class="col-sm-8 text-left">
 
 				<h1 style="color:black; font-size: 45px;">
-					Welcome back, <%=firstname%>. </h1>
+					Welcome back, <%=username%>. </h1>
 					
 				<p style="color:black;"> You are now logged in with administrative privileges.</p>
 

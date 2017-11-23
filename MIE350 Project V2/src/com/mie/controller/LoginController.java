@@ -39,7 +39,9 @@ public class LoginController extends HttpServlet {
 			 *User will either be a student, an owner, or invalid. We direct them to the appropriate page based on these conditions
 			 */
 			if (user.isStudent()) {
-				StudentUser su = (StudentUser) user;	//cast to student so we may access student methods
+//				StudentUser su = (StudentUser) user;	//cast to student so we may access student methods
+				User su = user;
+				
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", su);
 				session.setAttribute("email", user.getEmail());

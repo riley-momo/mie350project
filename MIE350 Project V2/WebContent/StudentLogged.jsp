@@ -8,7 +8,7 @@
 <%
 	session = request.getSession();
 	System.out.println(session);
-	if (session.getAttribute("username") == null) {
+	if (session.getAttribute("userName") == null) {
 		response.sendRedirect("login.jsp");
 	}
 %>
@@ -39,11 +39,11 @@
 	<%@ include file="navbar_loggedin.jsp"%>
 
 	<%
-		Member member = (Member) session.getAttribute("currentSessionUser");
+		User user = (User) session.getAttribute("currentSessionUser");
 
-		String username = (String) session.getAttribute("username");
-		String firstname = (String) session.getAttribute("firstname");
-		String lastname = (String) session.getAttribute("lastname");
+		String username = (String) session.getAttribute("userName");
+		String email= (String) session.getAttribute("email");
+		
 	%>
 	
 	
@@ -55,22 +55,15 @@
 			<div class="col-sm-8 text-left">
 
 				<h1 style="color:black; font-size: 45px;">
-					Welcome back, <%=firstname%>. </h1>
+					Welcome back, <%=username%>. </h1>
 					
-				<p style="color:black;"> You are now logged in with administrative privileges.</p>
+				<p style="color:black;"> You are now logged in.</p>
 
 				<h3 style="color:black;">Feel free to</h3>
 				<ul style="color:black;">
-					<li><b>Add</b> items to a current menu</li>
-					<li><b>Delete</b> items from a menu</li>
-					<li><b>Modify</b> menu item information</li>
+					<li><b>Rate</b> items on a menu!</li>
+					
 				</ul>
-				<input type="button" 
-						class="btn btn-info" value="Account Settings" style="font-size: 18px;" >
-						<br>
-						<br>
-				<input type="button" 
-						class="btn btn-info" value="My Menu" style="font-size: 18px;" >
 				
 <br>
 <br>
