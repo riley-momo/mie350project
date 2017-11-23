@@ -1,6 +1,7 @@
 package com.mie.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +60,8 @@ public class LoginController extends HttpServlet {
 
 			else if (user.isRestaurantOwner()){
 				//Redirect User to Restaurant Owner Page
-				Owner ou = (Owner) user;
+//				Owner ou = (Owner) user;
+				User ou = user;
 				
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", ou);

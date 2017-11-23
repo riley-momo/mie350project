@@ -8,7 +8,7 @@
 <%
 	session = request.getSession();
 	System.out.println(session);
-	if (session.getAttribute("userName") == null) {
+	if (session.getAttribute("username") == null) {
 		response.sendRedirect("login.jsp");
 	}
 %>
@@ -39,9 +39,9 @@
 	<%@ include file="navbar_loggedin.jsp"%>
 
 	<%
-		User user = (User) session.getAttribute("currentSessionUser");
+		Member member = (Member) session.getAttribute("currentSessionUser");
 
-		String username = (String) session.getAttribute("userName");
+		String username = (String) session.getAttribute("username");
 		String firstname = (String) session.getAttribute("firstname");
 		String lastname = (String) session.getAttribute("lastname");
 	%>
