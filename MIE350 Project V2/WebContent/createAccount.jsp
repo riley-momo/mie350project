@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-<title>NeXtmeal - Login</title>
+<title>NeXtmeal - Create Account</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -34,27 +34,28 @@
 	<div class="container-fluid text-center">
 		<div class="row content">
 				<div class="col-sm-8 text-left" style="width:100%;">
-				<h1 style="font-size: 88px;">Login</h1>
+				<h1 style="font-size: 88px;">Create Account</h1>
 				
-				<form action="LoginController">
-				<p style="font-size: 28px;">Email:</p>
+				
+<!-- 				<form action="LoginController"> -->
+				<form>
+				<p style="font-size: 28px;">What's your name?</p>
+				<input type="text" name="nm" style="font-size: 34px; margin-left:inherit; width:30%" />
+				<br>
+				<p style="font-size: 28px;">Enter an Email:</p>
 				<input type="text" name="em" style="font-size: 34px; margin-left:inherit; width:30%" />
 				<br>
-				<p style="font-size: 28px;">Password: </p>
+				<p style="font-size: 28px;">Set Password: </p>
 				<input	type="password" name="pw" style="font-size: 25px; margin-left:inherit; width: 30%"/>
 				<br>
 				
 				<input type="submit" 
-						class="btn btn-info" value="Login" style="background-color: #a94442; border-color: rgba(0,0,0,.0001);width:30%; ">
+						class="btn btn-info" value="Create Account" style="background-color: #a94442; border-color: rgba(0,0,0,.0001);width:30%; ">
 				
 				</form>
 				<br>
 				
-				
-				<form action="createAccount.jsp">
-				<input type="submit" 
-						class="btn btn-info" value="Create Profile" style="background-color: #a94442; border-color: rgba(0,0,0,.0001);width:30%; ">
-				</form>
+			
 				
 								
 				<br/> 
