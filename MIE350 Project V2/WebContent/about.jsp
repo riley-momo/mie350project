@@ -22,12 +22,13 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle2.css">
 
 </head>
 <body>
 
 	<%@ include file="navbar.jsp"%>
-
+<header class= "intro-about">
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
@@ -35,19 +36,9 @@
 			</div>
 			<div class="col-sm-8 text-left">
 				<h1>About</h1>
-				This application allows <a href="http://www.utoronto.ca">University of Toronto</a> engineering students to find food at a nearby restaurant
-			 	It was developed for the course MIE350
-				by the following students:<br>
-				<ul>
-					<li>Riley Moher</li>
-					<li>Rao Fu</li>
-					<li>Sijie Tian</li>
-					<li>Akhil Mathur</li>
-					<li>Houman Madani</li>
-					<li>Hisham Radwan</li>
-					<li>James Hanratty</li>
-				</ul>
-				As well, the following <b>open-source</b> tools were used:
+				<p>This application allows <a href="http://www.utoronto.ca">University of Toronto</a> engineering students to find food at a nearby restaurant.
+				</p><br>
+				The following <b>open-source</b> tools were used:
 				<ul>
 					<li><a href="http://getbootstrap.com/">The Bootstrap CSS
 							theme</a>, and</li>
@@ -55,9 +46,7 @@
 							Langridge's Sort Table JavaScript</a></li>
 				</ul>
 				<hr>
-				<h2>INSERT EXTRA TEXT HERE</h2>
-				<h2>Example of embedded image</h2>
-				<img src="img/douggieboy.png"> <br />
+				
 				<br />
 			</div>
 			<div class="col-sm-2 sidenav">
@@ -67,6 +56,7 @@
 	</div>
 
 	<%@ include file="footer.jsp"%>
+</header>
 
 </body>
 </html>

@@ -39,6 +39,7 @@
 <div class="container-fluid text-center">
 		<div class="row content">		
 		<h1>Meal Planner</h1>
+		
 				<form role="form" method="post" action="recommendations.jsp">	
 			<h2 style="font-size:34px";>Choose Your Preferences</h2><br>
 			
@@ -126,11 +127,6 @@
 					</div>
 					
 					<div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
-<!-- 						<div class="panel-body"> -->
-<!-- 							<input type="radio" name="optionsChecksmeal" value="Vegetarian" style="display:inline;width:8%">Vegetarian -->
-<!-- 							<input type="radio" name="optionsChecksmeal1" value="Anything" style="display:inline;width:8%">I'll eat anything -->
-<!-- 						</div> -->
-				
 					
 					<div class="panel-body">						
 							<div class="paneldiv">
