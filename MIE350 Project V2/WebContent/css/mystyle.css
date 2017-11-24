@@ -68,6 +68,19 @@
     background-size: cover;
 
 }
+.intro-AllMenuItems{
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+ 	background: url('../img/login2.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
 
 .navbar {
 	margin-bottom: 0;
@@ -179,6 +192,19 @@ footer {
 	color: white;
 	position: absolute;
 	width: 100%;
+}
+
+.sortable {
+    width: 100%;
+    max-width: -webkit-fill-available;
+    margin-bottom: 14px;
+    background-color: rgba(0,0,0,.5);
+    line-height:35px;
+    font-size: 17px;
+}
+
+th {
+    text-align: center;
 }
 
 

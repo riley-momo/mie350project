@@ -63,13 +63,21 @@
 					<li><b>Add</b> items to a current menu</li>
 					<li><b>Delete</b> items from a menu</li>
 					<li><b>Modify</b> menu item information</li>
-				</ul>
+			</ul>
+			<form action="listMenuItemsAdmin.jsp">
+				<input type="submit" 
+						class="btn btn-info" value="My Menu" style="font-size: 18px;" >
+						<br>
+						<br>
+						<br>
+			</form>	
+					
+			<ul style="color:black;">
+					<li ><b>Modify</b> your account details</li>
+			</ul>
 				<input type="button" 
 						class="btn btn-info" value="Account Settings" style="font-size: 18px;" >
-						<br>
-						<br>
-				<input type="button" 
-						class="btn btn-info" value="My Menu" style="font-size: 18px;" >
+				
 				
 <br>
 <br>

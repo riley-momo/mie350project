@@ -5,6 +5,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("userName") == null) {
+		response.sendRedirect("login.jsp");
+	}
+%>
+
+
 <head>
 <title>All Menu Items</title>
 <meta charset="utf-8">
@@ -28,7 +37,7 @@
 </head>
 <body>
 
-	<%@ include file="navbar.jsp"%>
+	<%@ include file="navbar_loggedin.jsp"%>
 <header class="intro-AllMenuItems">
 	<div class="container-fluid text-center">
 		<div class="row content">

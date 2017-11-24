@@ -1,27 +1,38 @@
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="memberLogged.jsp">MIE350 Sample Web
-				App (Admin)</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a href="memberLogged.jsp">Home</a></li>
-				<!-- li><a href="about.jsp">About</a></li -->
-				<li><a
-					href="/mie350webapp/StudentController?action=listStudentAdmin">Student
-						List (Admin)</a></li>
-			</ul>
-			<!-- The following code can be added to include a Login button to the right-hand side of the navbar-->
-			<ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                
+                
+                <a class="navbar-brand page-scroll" href="index.jsp">
+                  <p>neXtMeal</p>
+                </a>
+                
+            </div>
+
+<!--             Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+<!--                     Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden active">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="OwnerLogged.jsp">Home</a>
+                    </li>
+         
+					<li><a href="/mie350webapp/MenuController?action=listRestaurant">My Menu</a></li>
+	 				
+	 				
+                    <ul class="nav navbar-nav navbar-right">
 				<li><a href="LogoutServlet"><span
 						class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
+				</ul>
+                    </ul>
+            </div>
+<!--             /.navbar-collapse -->
+        </div>
+<!--         /.container -->
+    </nav>
