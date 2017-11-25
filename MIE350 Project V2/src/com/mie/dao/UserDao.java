@@ -121,7 +121,7 @@ public class UserDao {
 			String email = user.getEmail();
 			String password = user.getPassword();
 			Statement statement = currentCon.createStatement();
-			statement.execute("INSERT INTO User(NameOfUser, Email,Password) VALUES (CAST '"+ userName  + "' AS CHAR(20), CAST '" + email + "' AS CHAR(20), CAST '" + password + "' AS CHAR(20));");
+			statement.execute("INSERT INTO User(NameOfUser, Email,Password) VALUES ((CAST '"+ userName  + "' AS CHAR(20)),( CAST '" + email + "' AS CHAR(20)), (CAST '" + password + "' AS CHAR(20)));");
 			done = true;
 			
 		} catch (SQLException e) {
