@@ -84,10 +84,8 @@ public class UserDao {
 				//user is a restaurant owner
 				else if(more2){
 					String nameOfOwner = rs.getString("NameOfOwner");
-					int OwnerID = rs.getInt("OwnerID");
 					user.setNameOfUser(nameOfOwner);
 					user.setIsRestaurantOwner(true);
-					user.setUserID(OwnerID);
 				}
 				
 			}
@@ -100,10 +98,8 @@ public class UserDao {
 			else if (more) {
 				String nameOfStudent = rs.getString("NameOfStudent");
 				user.setNameOfUser(nameOfStudent);
-				int StudentID = rs.getInt("UserID");
 				user.setIsStudent(true);
 				user.setIsRestaurantOwner(false);
-				user.setUserID(StudentID);
 				
 				
 			}
@@ -116,6 +112,20 @@ public class UserDao {
 		 * Return the user object.
 		 */
 		return user;
+	}
+	
+	public void addStudentUser(User user){
+		try {
+			String userName = user.getNameOfUser();
+			String email = user.getEmail();
+			String password = user.getPassword();
+			Statement statement = currentCon.createStatement();
+			statement.executeQuery("INSERT INTO Student VALUES (" + userName + ", " + email + ", " + password + ");");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

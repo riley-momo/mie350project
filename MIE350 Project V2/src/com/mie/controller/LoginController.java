@@ -45,7 +45,6 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("email", user.getEmail());
 				session.setAttribute("userName", user.getNameOfUser());
-				session.setAttribute("ID", user.getUserID());
 				//session.setAttribute("dietRestrictions", );
 				
 				/**
@@ -68,7 +67,6 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("email", user.getEmail());
 				session.setAttribute("userName", user.getNameOfUser());
-				session.setAttribute("ID", user.getUserID());
 				
 				/**
 				 * Redirect to the owners-only home page.

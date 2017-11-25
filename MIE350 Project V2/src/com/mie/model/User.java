@@ -2,7 +2,6 @@ package com.mie.model;
 
 public class User {
 
-	private int ID;
 	private String nameOfUser;
 	private String email;
 	private String password;
@@ -15,14 +14,6 @@ public class User {
 
 	public void setNameOfUser(String name) {
 		this.nameOfUser = name;
-	}
-
-	public int getUserID() {
-		return ID;
-	}
-
-	public void setUserID(int newUserID) {
-		this.ID = newUserID;
 	}
 
 	public String getEmail(){
@@ -62,11 +53,11 @@ public class User {
 	public String toString() {
 		
 		if(isRestaurantOwner){
-			return "Owner [User ID = " + ID + ", Name of User = " + nameOfUser + ", Email = " + email +
+			return "Owner [ Name of User = " + nameOfUser + ", Email = " + email +
 					", Password = " + password + "]";
 		}
 		else if (isStudent){
-			return "Student [User ID = " + ID + ", Name of User = " + nameOfUser + ", Email = " + email +
+			return "Student [Name of User = " + nameOfUser + ", Email = " + email +
 					", Password = " + password + "]";
 		}
 		else return "Not sure if this user is a student or an owner";

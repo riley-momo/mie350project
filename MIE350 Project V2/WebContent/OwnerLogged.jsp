@@ -42,7 +42,6 @@
 		User user = (User) session.getAttribute("currentSessionUser");
 		String username = (String) session.getAttribute("userName");
 		String email= (String) session.getAttribute("email");
-		int OwnerID = (Integer)session.getAttribute("ID");
 		
 	%>
 	
