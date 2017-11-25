@@ -52,7 +52,7 @@ public class OwnerController extends HttpServlet {
 
 		if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
-			request.setAttribute("menus", MenuDao.getOwnerItems(owner.getUserID()));
+			request.setAttribute("menus", MenuDao.getOwnerItems(owner.getEmail()));
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);

@@ -66,7 +66,7 @@ public class MenuController extends HttpServlet {
 			request.setAttribute("menus", dao.getAllItems());
 		} else if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
-			request.setAttribute("menus", dao.getOwnerItems(owner.getUserID()));
+			request.setAttribute("menus", dao.getOwnerItems(owner.getEmail()));
 		}
 		else {
 			forward = INSERT;
