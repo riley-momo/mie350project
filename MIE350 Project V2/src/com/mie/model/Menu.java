@@ -8,22 +8,31 @@ public class Menu {
 	 * methods for the Student object.
 	 */
 
-	private String name;
+	private String itemName;
 	private int restaurantID;
+	private String restaurantName;
 	private double price;
 	private int calories;
 	private String category;
 	private String dietary;
 	private int promoKey;
 
-	public String getName() {
-		return name;
+	public String getMenuName() {
+		return itemName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMenuName(String name) {
+		this.itemName = name;
 	}
 
+	public String getRestaurantName(){
+		return restaurantName;
+	}
+	
+	public void setRestaurantName(String name){
+		this.restaurantName = name;
+	}
+	
 	public int getRestaurantID() {
 		return restaurantID;
 	}

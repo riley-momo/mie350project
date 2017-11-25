@@ -51,9 +51,9 @@ public class MenuController extends HttpServlet {
 		*/
 		User owner = new User();
 		String forward = "";
+		//int ID = Integer.valueOf(request.getParameter("OwnerID"));
+		//owner.setUserID(ID);
 		String action = request.getParameter("action");
-		
-		owner.setUserID(Integer.parseInt(request.getParameter("OwnerID")));
 
 		if (action.equalsIgnoreCase("delete")) {
 			forward = DELETE; //change in JSP

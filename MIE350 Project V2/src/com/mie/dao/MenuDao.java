@@ -112,7 +112,7 @@ public class MenuDao {
 		List<Menu> menus = new ArrayList<Menu>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from Menu");
+			ResultSet rs = statement.executeQuery("select * from Menu, Restaurant WHERE Menu.RestauranID = Restaurant.RestaurantID");
 			while (rs.next()) {
 				Menu menu = new Menu();
 				menu.setName(rs.getString("ItemName"));

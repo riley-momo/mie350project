@@ -27,6 +27,8 @@ public class RestaurantDao {
 	}
 	
 	
+	//TODO: update rating method
+	
 	//should only be accessed by the owner. 
 	public void changeAddress(Restaurant res){
 		/**
