@@ -45,9 +45,9 @@
 					<li><a href="https://kryogenix.org/code/browser/sorttable/">Stuart
 							Langridge's Sort Table JavaScript</a></li>
 				</ul>
-<<<<<<< V2
+
 				<hr>
-=======
+
 				</p>
 		</header>
 		
@@ -57,8 +57,7 @@
 				<p>If you run into any issues with developing your web application,
 				please post your questions in the course discussion board on
 				Portal/Blackboard.</p> <br /> <br />
->>>>>>> 47a68b9 About/MeetTeam
-				
+			
 				<br />
 			</div>
 			<div class="col-sm-2 sidenav">
