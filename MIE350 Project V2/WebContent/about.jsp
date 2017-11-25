@@ -37,19 +37,31 @@
 			<div class="col-sm-8 text-left">
 				<h1>About</h1>
 				<p>This application allows <a href="http://www.utoronto.ca">University of Toronto</a> engineering students to find food at a nearby restaurant.
-				</p><br>
-				The following <b>open-source</b> tools were used:
-				<ul>
+				<br>
+				The following <b>open-source</b> tools were used: </p>
+				<ul style="color:white;">
 					<li><a href="http://getbootstrap.com/">The Bootstrap CSS
 							theme</a>, and</li>
 					<li><a href="https://kryogenix.org/code/browser/sorttable/">Stuart
 							Langridge's Sort Table JavaScript</a></li>
+							
 				</ul>
-
-				<hr>
-
-				</p>
-		</header>
+				
+				
+				<p>It was developed using
+				the following:<br> </p>
+				<ul style="color:white;">
+					<li>Eclipse Java EE IDE for Web Developers,</li>
+					<li>The Java programming language,</li>
+					<li>Java Server Pages (JSP),</li>
+					<li>Apache Tomcat 7.0, and</li>
+					<li>A simple Microsoft Access database.</li>
+				</ul>
+				</div>
+				</div>
+				</div>
+				
+</header>
 		
 		<div class="intro-MeetTeam">
 								
@@ -59,15 +71,10 @@
 				Portal/Blackboard.</p> <br /> <br />
 			
 				<br />
-			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
-		</div>
-	</div>
+			</div>		
+	
 
 	<%@ include file="footer.jsp"%>
-</header>
 
 </body>
 </html>

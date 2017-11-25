@@ -37,7 +37,7 @@
 				<h1 style="font-size: 88px;">Create Account</h1>
 				
 				
-<!-- 				<form action="LoginController"> -->
+
 				<form>
 				<p style="font-size: 28px;">What's your name?</p>
 				<input type="text" name="nm" style="font-size: 34px; margin-left:inherit; width:30%" />

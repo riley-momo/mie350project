@@ -45,10 +45,10 @@
     display: table;
     width: 100%;
     height: auto;
-    padding: 100px 0;
-    text-align: center;
+    padding: 70px 250px;
+    text-align: left;
     color: #CCC;
- background: url('../img/login2.jpg');
+ background: url('../img/foodDarkFlip.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -85,7 +85,7 @@
     display: table;
     width: 100%;
     height: auto;
-    padding: 100px 0;
+    padding: 50px 0;
     text-align: center;
     color: #CCC;
     background: url('../img/foodDark.jpg');
