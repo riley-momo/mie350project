@@ -32,6 +32,7 @@ public class RatingController {
 	private static final long serialVersionUID = 1L;
 	private static String RATE = "/leaveRating.jsp";
 	private static String INVALID_RATE = "/invalidRating.jsp";
+	private static String RATE_SUCCESS = "/ratingConfirmation.jsp";
 	private RatingDao dao;
 	
 
@@ -43,10 +44,10 @@ public class RatingController {
 		dao = new RatingDao();
 	}
 
-	protected void doPost(HttpServletRequest request,
+	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		/**
-		 * This method handles rating restaurants
+		 * This method handles directing the user to the restaurant rating page
 		 */
 		HttpSession session = request.getSession(true);
 		User user = (User) session.getAttribute("currentSessionUser");
@@ -69,6 +70,24 @@ public class RatingController {
 
 		view.forward(request, response);
 	}
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		/**
+		 * This method handles rating restaurants
+		 */
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("currentSessionUser");
+		int restaurantID =  Integer.parseInt(request.getParameter("restaurantToRate"));
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		
+		dao.addRating(user, restaurantID, rating);
+		
+		RequestDispatcher view= request.getRequestDispatcher(RATE_SUCCESS);
+		view.forward(request, response);
+	}
+
+
+
 }	
 
 	

@@ -42,71 +42,30 @@ public class RatingDao {
 		return result;
 	}
 	
-	public void addRating(StudentUser student, Restaurant res, int rating) {
+	public void addRating(User student, int restaurantID, int rating) {
 		/**
 		 * This method adds a new rating to the database
 		 */
 		try {
-			int studentID = student.getUserID();
-			int resID = res.getResID();
-	
-//			//check if the rating exists
-//			String query = "SELECT * FROM Rating WHERE UserID = " + studentID + " AND RestaurantID = " + resID;
-//			Statement stmt = connection.createStatement();
-//			stmt.execute(query);
-
-			//if the rating for one restaurant has already been added by an user, an error will be raised and this action will fail
-			String query = "INSERT INTO Rating VALUES (" + studentID + ", " + resID
+			//Insert the user's rating in to the rating table
+			String email = student.getEmail();
+			String query = "INSERT INTO Rating VALUES (" + email + ", " + restaurantID
 					+ ", " + rating + ");";
 			Statement stmt = connection.createStatement();
 			stmt.execute(query);
 			
+			//Get the average rating from the rating table
+			query = "SELECT AVG(Rating) AS avgRating FROM Rating WHERE RestaurantID = " + restaurantID + ";";
+			ResultSet rs = stmt.executeQuery(query);
+			rs.next();
+			rating = rs.getInt("avgRating");	
+			
+			//Update the restaurant table with the new rating
+			query = "UPDATE Restaurant SET Rating = " + rating + " WHERE RestaurantID = " + restaurantID + ";";
+			stmt.execute(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-
-	public int getRating(StudentUser student, Restaurant res, int rating){
-		/**
-		 * This method retrieves existing rating a user did on a restaurant
-		 */
-		int existingRating = (Integer) null;
-		try {
-			int studentID = student.getUserID();
-			int resID = res.getResID();
-			
-			String query = "SELECT Rating From Rating WHERE UserID = " + studentID +" AND RestaurantID = " + resID;
-			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()){
-				existingRating = rs.getInt("Rating");
-			}
-		
-		
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	
-		return existingRating;
-	}
-	
-	public void deleteRating(StudentUser student, Restaurant res, int rating){
-		/**
-		 * This method deletes existing rating a user did on a restaurant
-		 */
-		try {
-			int studentID = student.getUserID();
-			int resID = res.getResID();
-			
-			String query = "DELECT FROM Rating WHERE UserID = " + studentID +" AND RestaurantID = " + resID;
-			Statement stmt = connection.createStatement();
-			stmt.executeQuery(query);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	
-	}
-
 
 }
