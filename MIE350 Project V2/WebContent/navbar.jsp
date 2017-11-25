@@ -26,7 +26,6 @@
 					<li><a class="page-scroll" href="mealPlanner.jsp">Meal Search</a></li>
 					<li><a href="/mie350webapp/MenuController?action=listRestaurant">List all Menu Items</a></li>
 	 				<li><a class="page-scroll" href="about.jsp">About</a></li>
-	 				<li><a href="meetTheTeam.jsp">Meet the Team!</a></li>
 	 				
                     <ul class="nav navbar-nav navbar-right">
 					<li><a href="login.jsp"><span
