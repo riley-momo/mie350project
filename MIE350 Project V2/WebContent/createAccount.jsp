@@ -40,13 +40,13 @@
 
 				<form>
 				<p style="font-size: 28px;">What's your name?</p>
-				<input type="text" name="nm" style="font-size: 34px; margin-left:inherit; width:30%" />
+				<input type="text" name="nm" maxlength="20" style="font-size: 34px; margin-left:inherit; width:30%" />
 				<br>
 				<p style="font-size: 28px;">Enter an Email:</p>
-				<input type="text" name="em" style="font-size: 34px; margin-left:inherit; width:30%" />
+				<input type="text" name="em" maxlength="20" style="font-size: 34px; margin-left:inherit; width:30%" />
 				<br>
 				<p style="font-size: 28px;">Set Password: </p>
-				<input	type="password" name="pw" style="font-size: 25px; margin-left:inherit; width: 30%"/>
+				<input	type="password" name="pw" maxlength="20" style="font-size: 25px; margin-left:inherit; width: 30%"/>
 				<br>
 				
 				<input type="submit" 

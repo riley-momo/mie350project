@@ -23,7 +23,7 @@
                         <a class="page-scroll" href="OwnerLogged.jsp">Home</a>
                     </li>
          
-					<li><a href="/mie350webapp/MenuController?action=listOwnersItems">My Menu</a></li>
+					<li><a href="/mie350webapp/MenuController?action=listRestaurant">My Menu</a></li>
 	 				
 	 				
                     <ul class="nav navbar-nav navbar-right">

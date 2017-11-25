@@ -36,7 +36,7 @@
 </head>
 <body>
 
-	<%@ include file="navbar_loggedin.jsp"%>
+	<%@ include file="navbar_Studentloggedin.jsp"%>
 
 	<%
 		User user = (User) session.getAttribute("currentSessionUser");
