@@ -50,4 +50,14 @@
 	<session-config>
 		<session-timeout>15</session-timeout>
 	</session-config>
+	<servlet>
+		<description></description>
+		<display-name>RatingController</display-name>
+		<servlet-name>RatingController</servlet-name>
+		<servlet-class>com.mie.controller.RatingController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RatingController</servlet-name>
+		<url-pattern>/RatingController</url-pattern>
+	</servlet-mapping>
 </web-app>
