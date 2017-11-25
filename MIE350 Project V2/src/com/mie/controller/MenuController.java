@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mie.dao.MenuDao;
 import com.mie.model.Menu;
+import com.mie.model.User;
 
 public class MenuController extends HttpServlet {
 	/**
@@ -26,10 +27,11 @@ public class MenuController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static String INSERT = "/addStudent.jsp";
+	private static String INSERT = "/addMenuItem.jsp";
 	private static String EDIT = "/editMenuItems.jsp";
 	private static String LIST_MENU_ITEMS = "/listMenuItems.jsp";
-	private static String DELETE = "/deleteMenu.jsp";
+	private static String LIST_OWNER_MENU_ITEMS = "/listMenuItemsOwner.jsp";
+	private static String DELETE = "/deleteMenuItem.jsp";
 
 	private MenuDao dao;
 
@@ -46,9 +48,12 @@ public class MenuController extends HttpServlet {
 
 		/**
 		 * This class retrieves the appropriate 'action' found on the JSP pages:
-		 */
+		*/
+		User owner = new User();
 		String forward = "";
 		String action = request.getParameter("action");
+		
+		owner.setUserID(Integer.parseInt(request.getParameter("OwnerID")));
 
 		if (action.equalsIgnoreCase("delete")) {
 			forward = DELETE; //change in JSP
@@ -59,6 +64,9 @@ public class MenuController extends HttpServlet {
 		} else if (action.equalsIgnoreCase("listRestaurant")) {
 			forward = LIST_MENU_ITEMS;
 			request.setAttribute("menus", dao.getAllItems());
+		} else if(action.equalsIgnoreCase("listOwnersItems")) {
+			forward = LIST_OWNER_MENU_ITEMS;
+			request.setAttribute("menus", dao.getOwnerItems(owner.getUserID()));
 		}
 		else {
 			forward = INSERT;

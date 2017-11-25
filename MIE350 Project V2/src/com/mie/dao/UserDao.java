@@ -84,8 +84,10 @@ public class UserDao {
 				//user is a restaurant owner
 				else if(more2){
 					String nameOfOwner = rs.getString("NameOfOwner");
+					int OwnerID = rs.getInt("OwnerID");
 					user.setNameOfUser(nameOfOwner);
 					user.setIsRestaurantOwner(true);
+					user.setUserID(OwnerID);
 				}
 				
 			}
@@ -98,8 +100,10 @@ public class UserDao {
 			else if (more) {
 				String nameOfStudent = rs.getString("NameOfStudent");
 				user.setNameOfUser(nameOfStudent);
+				int StudentID = rs.getInt("UserID");
 				user.setIsStudent(true);
 				user.setIsRestaurantOwner(false);
+				user.setUserID(StudentID);
 				
 				
 			}

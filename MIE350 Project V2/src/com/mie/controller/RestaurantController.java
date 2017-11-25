@@ -1,5 +1,7 @@
 package com.mie.controller;
 
-public class RestaurantController {
+import javax.servlet.http.HttpServlet;
+
+public class RestaurantController extends HttpServlet {
 
 }

@@ -39,16 +39,17 @@ public class LoginController extends HttpServlet {
 			 *User will either be a student, an owner, or invalid. We direct them to the appropriate page based on these conditions
 			 */
 			if (user.isStudent()) {
-//				StudentUser su = (StudentUser) user;	//cast to student so we may access student methods
-				User su = user;
+				//User su = user;
 				
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionUser", su);
+				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("email", user.getEmail());
 				session.setAttribute("userName", user.getNameOfUser());
+				session.setAttribute("ID", user.getUserID());
 				//session.setAttribute("dietRestrictions", );
+				
 				/**
-				 * Redirect to the members-only home page.
+				 * Redirect to the students-only home page.
 				 */
 				response.sendRedirect("StudentLogged.jsp");
 
@@ -59,17 +60,19 @@ public class LoginController extends HttpServlet {
 				session.setMaxInactiveInterval(900);
 				
 			}
-
 			else if (user.isRestaurantOwner()){
 				//Redirect User to Restaurant Owner Page
-//				Owner ou = (Owner) user;
-				User ou = user;
+				//User ou = user;
 				
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSessionUser", ou);
+				session.setAttribute("currentSessionUser", user);
 				session.setAttribute("email", user.getEmail());
 				session.setAttribute("userName", user.getNameOfUser());
+				session.setAttribute("ID", user.getUserID());
 				
+				/**
+				 * Redirect to the owners-only home page.
+				 */
 				response.sendRedirect("OwnerLogged.jsp");
 				session.setMaxInactiveInterval(900);
 			}

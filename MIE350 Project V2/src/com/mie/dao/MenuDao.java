@@ -248,6 +248,33 @@ public class MenuDao {
 		return menus;
 	}
 
+	public List<Menu> getOwnerItems(int OwnerID) {
+		/**
+		 * This method returns the list of all menu items that a restaurant owner owns
+		 * in the form of a List object.
+		 */
+		List<Menu> menus = new ArrayList<Menu>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM Menu, Restaurant WHERE Restaurant.RestaurantID = Menu.RestaurantID AND Restaurant.Owner_ID = "
+					+ OwnerID + ";");
+			while (rs.next()) {
+				Menu menu = new Menu();
+				menu.setName(rs.getString("ItemName"));
+				menu.setRestaurantID(rs.getInt("RestaurantID"));
+				menu.setPrice(rs.getDouble("Price"));
+				menu.setCalories(rs.getInt("Calories"));
+				menu.setCategory(rs.getString("Category"));
+				menu.setDietary(rs.getString("DietaryRestrictions"));
+				menu.setPromoKey(rs.getInt("PromoKey"));
+				
+				menus.add(menu);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return menus;
+	}
 	
 
 }

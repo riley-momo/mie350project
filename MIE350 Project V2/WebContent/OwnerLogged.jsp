@@ -43,6 +43,7 @@
 
 		String username = (String) session.getAttribute("userName");
 		String email= (String) session.getAttribute("email");
+		int OwnerID = (Integer)session.getAttribute("ID");
 	%>
 	
 	
@@ -64,7 +65,7 @@
 					<li><b>Delete</b> items from a menu</li>
 					<li><b>Modify</b> menu item information</li>
 			</ul>
-			<form action="listMenuItemsAdmin.jsp">
+			<form action = "listMenuItemsOwner.jsp">
 				<input type="submit" 
 						class="btn btn-info" value="My Menu" style="font-size: 18px;" >
 						<br>

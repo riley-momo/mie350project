@@ -1,10 +1,14 @@
 package com.mie.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+
 import com.mie.util.DbUtil;
+import com.mie.model.Menu;
 import com.mie.model.Restaurant;
 
 public class RestaurantDao {
@@ -21,6 +25,7 @@ public class RestaurantDao {
 		 */
 		connection = DbUtil.getConnection();
 	}
+	
 	
 	//should only be accessed by the owner. 
 	public void changeAddress(Restaurant res){
