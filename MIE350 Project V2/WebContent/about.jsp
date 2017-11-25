@@ -36,6 +36,7 @@
 			</div>
 			<div class="col-sm-8 text-left">
 				<h1>About</h1>
+				<br>
 				<p>This application allows <a href="http://www.utoronto.ca">University of Toronto</a> engineering students to find food at a nearby restaurant.
 				<br>
 				The following <b>open-source</b> tools were used: </p>
@@ -46,6 +47,8 @@
 							Langridge's Sort Table JavaScript</a></li>
 							
 				</ul>
+				<br>
+				<br>
 				
 				
 				<p>It was developed using
