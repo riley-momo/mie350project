@@ -116,14 +116,20 @@ public class UserDao {
 	
 	public boolean addStudentUser(User user){
 		boolean done = false;
+		PreparedStatement pstmt = null ;
 		try {
-			String userName = user.getNameOfUser();
-			String email = user.getEmail();
-			String password = user.getPassword();
-			Statement statement = currentCon.createStatement();
-			statement.execute("INSERT INTO User(NameOfUser, Email,Password) VALUES ((CAST '"+ userName  + "' AS CHAR(20)),( CAST '" + email + "' AS CHAR(20)), (CAST '" + password + "' AS CHAR(20)));");
-			done = true;
+			String userName = String.format("%20.20s", user.getNameOfUser());
+			String email = String.format("%20.20s",user.getEmail());
+			String password = String.format("%20.20s",user.getPassword());
 			
+			String query = "INSERT INTO User(NameOfUser, Email,Password) VALUES(?,?,?)";
+			pstmt = currentCon.prepareStatement(query);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, email);
+			pstmt.setString(3, password);
+			pstmt.executeUpdate();
+	
+			done = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
