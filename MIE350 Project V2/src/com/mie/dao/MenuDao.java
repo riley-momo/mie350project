@@ -111,7 +111,7 @@ public class MenuDao {
 		List<Menu> menus = new ArrayList<Menu>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM Menu, Restaurant WHERE Menu.RestaurantID = Restaurant.RestaurantID");
+			ResultSet rs = statement.executeQuery("SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Menu.RestaurantID = Restaurant.RestaurantID");
 			while (rs.next()) {
 				Menu menu = new Menu();
 				menu.setMenuName(rs.getString("ItemName"));
@@ -141,89 +141,89 @@ public class MenuDao {
 		
 		//filter everything
 		if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price + " AND Calories <= " + calories
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price + " AND Calories <= " + calories
 					+ " AND DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
 		}
 		
 		//filter calories, category, diet
 		else if(!calories.equals("*") && !category.equals("*") && !diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Calories <= " + calories
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Calories <= " + calories
 					+ " AND DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
 		}
 		
 		//filter calories, category, price
 		else if(!calories.equals("*") && !category.equals("*") && diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price + " AND Calories <= " + calories
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price + " AND Calories <= " + calories
 					+ "' AND Category = '" + category + "';";
 		}
 		
 		//filter category, diet, price
 		else if(calories.equals("*") && !category.equals("*") && !diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price
 					+ " AND DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
 		}
 		
 		//filter calories, diet, price
 		else if(!calories.equals("*") && category.equals("*") && !diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price + " AND Calories <= " + calories
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price + " AND Calories <= " + calories
 					+ " AND DietaryRestrictions = '" + diet + "';";
 		}
 		
 		//filter calories, category
 		else if(!calories.equals("*") && !category.equals("*") && diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Calories <= " + calories + "' AND Category = '" + category + "';";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Calories <= " + calories + "' AND Category = '" + category + "';";
 		}
 
 		//filter calories, price
 		if(!calories.equals("*") && category.equals("*") && diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price + " AND Calories <= " + calories + ";";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price + " AND Calories <= " + calories + ";";
 		}
 		
 		//filter calories, diet
 		if(!calories.equals("*") && category.equals("*") && !diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Calories <= " + calories
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Calories <= " + calories
 					+ " AND DietaryRestrictions = '" + diet + "';";
 		}
 		
 		//filter diet, price
 		if(calories.equals("*") && category.equals("*") && !diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price 
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price 
 					+ " AND DietaryRestrictions = '" + diet + "';";
 		}
 		
 		//filter category, price
 		if(calories.equals("*") && !category.equals("*") && diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price + " AND Category = '" + category + "';";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price + " AND Category = '" + category + "';";
 		}
 		
 		//filter category, diet
 		if(calories.equals("*") && !category.equals("*") && !diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE DietaryRestrictions = '" + diet + "' AND Category = '" + category + "';";
 		}
 		
 		//filter calories only
 		else if(!calories.equals("*") && category.equals("*") && diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Calories <= " + calories + ";";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Calories <= " + calories + ";";
 		}
 		
 		//filter category only
 		else if(calories.equals("*") && !category.equals("*") && diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Category = '" + category + "';";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Category = '" + category + "';";
 		}
 		
 		//filter price only
 		else if(calories.equals("*") && category.equals("*") && diet.equals("*") && !price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE Price <= " + price + ";";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Price <= " + price + ";";
 		}
 		
 		//filter diet only
 		else if(calories.equals("*") && category.equals("*") && !diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant WHERE DietaryRestrictions = '" + diet + "';";
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE DietaryRestrictions = '" + diet + "';";
 		}
 	
 		//filter nothing
 		else if(calories.equals("*") && category.equals("*") && diet.equals("*") && price.equals("*")){
-			query = "SELECT * FROM Menu, Restaurant;" ;
+			query = "SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID;" ;
 		}
 		
 		List<Menu> menus = new ArrayList<Menu>();
@@ -256,7 +256,7 @@ public class MenuDao {
 		List<Menu> menus = new ArrayList<Menu>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM Menu, Restaurant WHERE Restaurant.RestaurantID = Menu.RestaurantID AND Restaurant.Owner_Email = '"
+			ResultSet rs = statement.executeQuery("SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Restaurant.RestaurantID = Menu.RestaurantID AND Restaurant.Owner_Email = '"
 					+ ownerEmail + "';");
 			while (rs.next()) {
 				Menu menu = new Menu();
