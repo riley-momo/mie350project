@@ -14,7 +14,7 @@
 %>
 
 <head>
-<title>NeXtmeal Owners Home Page</title>
+<title>NeXtmeal Student Home Page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -61,7 +61,7 @@
 
 				<h3 style="color:black;">Feel free to</h3>
 				<ul style="color:black;">
-					<li><b>Rate</b> items on a menu!</li>
+					<li><b>Rate</b> restaurants!</li>
 					
 				</ul>
 				
