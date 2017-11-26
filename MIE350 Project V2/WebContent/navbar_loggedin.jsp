@@ -6,7 +6,7 @@
                 </button>
                 
                 
-                <a class="navbar-brand page-scroll" href="index.jsp">
+                <a class="navbar-brand page-scroll" href="OwnerLogged.jsp">
                   <p>neXtMeal</p>
                 </a>
                 

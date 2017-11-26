@@ -61,6 +61,7 @@ public class MenuController extends HttpServlet {
 		} 
 		else if (action.equalsIgnoreCase("searchMenuItems")){
 			forward = SEARCH_MENU_ITEMS;
+			request.setAttribute("menus", dao.getAllItems());
 			//set attribute names to "price", "calories", "category", and "diet"
 			
 			//request.setAttribute("menus", dao.getFilteredItems(price, calories, category, diet));

@@ -6,7 +6,7 @@
                 </button>
                 
                 
-                <a class="navbar-brand page-scroll" href="index.jsp">
+                <a class="navbar-brand page-scroll" href="StudentLogged.jsp">
                   <p>neXtMeal</p>
                 </a>
                 
@@ -20,10 +20,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="OwnerLogged.jsp">Home</a>
+                        <a class="page-scroll" href="StudentLogged.jsp">Home</a>
                     </li>
          
-					<li><a href="/mie350webapp/MenuController?action=listRestaurant">My Menu</a></li>
+					<li><a href="/mie350webapp/MenuController?action=searchMenuItems">All Menu Items</a></li>
 	 				
 	 				
                     <ul class="nav navbar-nav navbar-right">
