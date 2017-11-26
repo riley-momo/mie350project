@@ -55,7 +55,7 @@ public class MenuController extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
-			request.setAttribute("menus", dao.getOwnerItems(owner.getEmail()));
+			request.setAttribute("menus", dao.getOwnerItems((String)request.getSession().getAttribute("Email")));
 		} 
 //		else if (action.equalsIgnoreCase("delete")) {
 //			forward = DELETE; //change in JSP

@@ -41,9 +41,13 @@
 	<%
 		User user = (User) session.getAttribute("currentSessionUser");
 		String username = (String) session.getAttribute("userName");
-		String email= (String) session.getAttribute("email");
+		String email= (String) session.getAttribute("email");	
+		session.setAttribute("Email", email); 	%>
 		
-	%>
+		
+
+	
+	<%-- <input type="hidden" name="email" value="<%= (String) session.getAttribute("email") %>" />--%>
 	
 	
 <header class="intro-loggedInHome">
@@ -66,7 +70,7 @@
 			</ul>
 			
 			
-			<a href="/mie350webapp/MenuController?action=listOwnersItems" class="buttonList">My Menu</a>
+			<a href="/mie350webapp/MenuController?action=listOwnersItems" class="buttonList" >My Menu</a>
 			<br>
 			<br>
 			<br>
