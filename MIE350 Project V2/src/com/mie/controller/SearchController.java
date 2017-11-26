@@ -25,7 +25,7 @@ public class SearchController extends HttpServlet {
 	 */
 	//test
 	private static final long serialVersionUID = 1L;
-	private static String SEARCH_MENU = "/searchMenuResult.jsp";
+	private static String SEARCH_MENU = "/recommendations.jsp";
 	private MenuDao dao;
 
 	/**
@@ -42,15 +42,48 @@ public class SearchController extends HttpServlet {
 		 * This method handles retrieval of SQL query based on users filter
 		 */
 		
+		/* handle price */
+		String priceoption = request.getParameter("priceoption");
+		String p1price = request.getParameter("p1price");
+		String p2price = request.getParameter("p1price");
+		String price = "*";
+		if(priceoption.equals("p1")){
+			if(p1price.equals("") == false){
+				price = p1price;
+			}
+		}
+		/* handle calories */
+		String caloriesoption = request.getParameter("calories");
+		String c1val = request.getParameter("c1val");
+		String calories = "*";
+		if(caloriesoption.equals("c1")){
+			if(c1val.equals("") == false){
+				calories = c1val;
+			}
+		}
+		/*handle diet*/
+		String dietoption = request.getParameter("diet");
+		String diet = "*";
+		if(dietoption.equals("d1")){
+			diet = "Vegetarian";
+		}
+		
+		/* handle category */
+		String categoryoption = request.getParameter("category");
+		String category = "*";
+		if(categoryoption.equals("all") == false){
+			category = categoryoption;
+		}
+		/* */
+		
 		//if the input is anything, set parameter to "*"
-		String calories = request.getParameter("calories");
-		String category = request.getParameter("category");
-		String diet = request.getParameter("dietaryRestriction");
-		String price = request.getParameter("price");
+		//String calories = request.getParameter("calories");
+		//String category = request.getParameter("category");
+		//String diet = request.getParameter("dietaryRestriction");
+		//String price = request.getParameter("price");
 		
 		RequestDispatcher view = request.getRequestDispatcher(SEARCH_MENU);
-		//request.setAttribute("query", query);
-		request.setAttribute("menuItems", dao.getFilteredItems(price, calories, category, diet));
+		request.setAttribute("menus", dao.getFilteredItems(price, calories, category, diet));
 		/**
 		 * Redirect to the search results page after the list of menus
 		 * matching the keywords has been retrieved.

@@ -40,7 +40,7 @@
 		<div class="row content">		
 		<h1>Meal Planner</h1>
 		
-				<form role="form" method="post" action="recommendations.jsp">	
+			<form role="form" method="post" action="SearchController">	
 			<h2 style="font-size:34px";>Choose Your Preferences</h2><br>
 			
 			
@@ -57,12 +57,12 @@
 						<div class="panel-body">
 							
 							<div class="paneldiv">
-									<input type="radio" name="optionsRadios0" id="optionsRadios01" value="option2" style="display:inline;width:8%" checked >
+									<input type="radio" name="priceoption"  value="p1" style="display:inline;width:8%" checked >
 									<label for="firstname" class="control-label">Less than $</label>
-									<input type="number" class="form-control" id="pricelessthan" placeholder="less than" style="display:inline;width:20%">
+									<input type="number" class="form-control" name="p1price" placeholder="less than" style="display:inline;width:20%" value="" min="0">
 							</div>
 							<div class="paneldiv">
-									<input type="radio" name="optionsRadios0" id="optionsRadios00" value="option1" style="display:inline;width:8%"  >
+									<input type="radio" name="priceoption" value="p2" style="display:inline;width:8%"  >
 									<label for="firstname" class="control-label"> Price doesn't matter to me</label>
 <!-- 									<input type="number" class="form-control" id="pricefrom" placeholder="from" style="display:inline;width:30%"> -->
 <!-- 									<label for="firstname" class="control-label">To </label> -->
@@ -87,33 +87,14 @@
 <!-- 								<input type="number" class="form-control" id="pricelessthan" placeholder="greater than" style="display:inline;width:50%"> -->
 <!-- 							</div> -->
 							<div class="paneldiv">
-								<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" style="display:inline;width:8%" checked > 
-								<label for="firstname" class="control-label">Equal </label>
-								<input type="number" class="form-control" id="pricelessthan" placeholder="Equal" style="display:inline;width:50%">
+								<input type="radio" name="calories" value="c1" style="display:inline;width:8%" > 
+								<label for="firstname" class="control-label">Less than </label>
+								<input type="number" class="form-control" name="c1val" placeholder="Less than" style="display:inline;width:50%" value="">
 							</div>
 							<div class="paneldiv">
-								<input type="radio" name="optionsRadios" id="optionsRadios3" value="option2" style="display:inline;width:8%" > 
-								<label for="firstname" class="control-label">Less than </label>
-								<input type="number" class="form-control" id="pricelessthan" placeholder="Less than" style="display:inline;width:50%">
+								<input type="radio" name="calories"  value="c2" style="display:inline;width:8%" checked> 
+								<label for="firstname" class="control-label"> calories doesn't matter to me </label>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="headingThree">
-					<h4 class="panel-title">
-					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-					  Cuisine Type
-					</a>
-					</h4>
-					</div>
-					<div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-						<div class="panel-body">
-							<input type="checkbox" name="optionsChecks" value="Chinese" style="display:inline;width:8%">Chinese
-							<input type="checkbox" name="optionsChecks1" value="MiddleEastern" style="display:inline;width:8%">Middle Eastern
-							<input type="checkbox" name="optionsChecks2" value="Japanese" style="display:inline;width:8%">Japanese
-							<input type="checkbox" name="optionsChecks3" value="Mexican" style="display:inline;width:8%">Mexican
-							<input type="checkbox" name="optionsChecks4" value="Fast Food" style="display:inline;width:8%">Fast Food
 						</div>
 					</div>
 				</div>
@@ -130,11 +111,43 @@
 					
 					<div class="panel-body">						
 							<div class="paneldiv">
-								<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" style="display:inline;width:8%" checked > 
+								<input type="radio" name="diet" value="d1" style="display:inline;width:8%" > 
 								<label for="firstname" class="control-label">Vegetarian </label>
 							</div>
 							<div class="paneldiv">
-								<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" style="display:inline;width:8%" > 
+								<input type="radio" name="diet" value="d2" style="display:inline;width:8%" checked> 
+								<label for="firstname" class="control-label">I'll eat anything </label>
+							</div>
+					</div>
+					
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingFive">
+					<h4 class="panel-title">
+					<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseThree">
+					  Meal Category
+					</a>
+					</h4>
+					</div>
+					
+					<div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+					
+					<div class="panel-body">						
+							<div class="paneldiv">
+								<input type="radio" name="category" value="Beverage" style="display:inline;width:8%" > 
+								<label for="firstname" class="control-label">Beverage </label>
+							</div>
+							<div class="paneldiv">
+								<input type="radio" name="category" value="Meal" style="display:inline;width:8%" > 
+								<label for="firstname" class="control-label">Meal </label>
+							</div>
+							<div class="paneldiv">
+								<input type="radio" name="category" value="Side" style="display:inline;width:8%" > 
+								<label for="firstname" class="control-label">Side </label>
+							</div>
+							<div class="paneldiv">
+								<input type="radio" name="category" value="all" style="display:inline;width:8%" checked > 
 								<label for="firstname" class="control-label">I'll eat anything </label>
 							</div>
 					</div>
@@ -166,8 +179,8 @@
 	$(document).ready(function() {
 		$('#collapseOne').collapse('hide');
 		$('#collapseTwo').collapse('hide');
-		$('#collapseThree').collapse('hide');
 		$('#collapseFour').collapse('hide');
+		$('#collapseFive').collapse('hide');
 		 
 	});
 </script>

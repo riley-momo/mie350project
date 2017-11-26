@@ -46,7 +46,7 @@
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>RestaurantID</th>
+							<th>Restaurant Name</th>
 							<th>Price ($)</th>
 							<th>Calories</th>
 							<th>Category</th>
@@ -56,8 +56,8 @@
 					<tbody>
 						<c:forEach items="${menus}" var="menu">
 							<tr>
-								<td align="center"><c:out value="${menu.getName()}" /></td>
-								<td align="center"><c:out value="${menu.getRestaurantID()}" /></td>
+								<td align="center"><c:out value="${menu.getMenuName()}" /></td>
+								<td align="center"><c:out value="${menu.getRestaurantName()}" /></td>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								
 								<c:choose>
@@ -71,7 +71,7 @@
 								
 								<td align="center"><c:out value="${menu.getCategory()}" /></td>
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
-
+								
 							</tr>
 						</c:forEach>
 					</tbody>
