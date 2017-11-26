@@ -32,6 +32,8 @@ public class MenuController extends HttpServlet {
 	private static String LIST_MENU_ITEMS = "/listMenuItems.jsp";
 	private static String LIST_OWNER_MENU_ITEMS = "/listMenuItemsOwner.jsp";
 	private static String DELETE = "/deleteMenuItem.jsp";
+	private static String SEARCH_MENU_ITEMS = "/listMenuItemsStudent.jsp";
+	
 
 	private MenuDao dao;
 
@@ -57,6 +59,12 @@ public class MenuController extends HttpServlet {
 			forward = LIST_OWNER_MENU_ITEMS;
 			request.setAttribute("menus", dao.getOwnerItems((String)request.getSession().getAttribute("Email")));
 		} 
+		else if (action.equalsIgnoreCase("searchMenuItems")){
+			forward = SEARCH_MENU_ITEMS;
+			//set attribute names to "price", "calories", "category", and "diet"
+			
+			//request.setAttribute("menus", dao.getFilteredItems(price, calories, category, diet));
+		}
 //		else if (action.equalsIgnoreCase("delete")) {
 //			forward = DELETE; //change in JSP
 //		} else if (action.equalsIgnoreCase("insert")) {
