@@ -70,7 +70,7 @@
 						<br>
 						<br>
 						<br>
-			</form>	
+			</form>
 					
 			<ul style="color:black;">
 					<li ><b>Modify</b> your account details</li>

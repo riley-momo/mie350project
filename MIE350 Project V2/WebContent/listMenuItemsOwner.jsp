@@ -45,7 +45,7 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>All Menu Items</h1>
+				<h1>My Menu Items</h1>
 
 				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
 
@@ -55,7 +55,7 @@
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>RestaurantID</th>
+							<th>Restaurant Name</th>
 							<th>Price ($)</th>
 							<th>Calories</th>
 							<th>Category</th>
@@ -65,8 +65,8 @@
 					<tbody>
 						<c:forEach items="${menus}" var="menu">
 							<tr>
-								<td align="center"><c:out value="${menu.getName()}" /></td>
-								<td align="center"><c:out value="${menu.getRestaurantID()}" /></td>
+								<td align="center"><c:out value="${menu.getMenuName()}" /></td>
+								<td align="center"><c:out value="${menu.getRestaurantName()}" /></td>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								
 								<c:choose>

@@ -118,11 +118,11 @@ public class UserDao {
 		boolean done = false;
 		PreparedStatement pstmt = null ;
 		try {
-			String userName = String.format("%20.20s", user.getNameOfUser());
-			String email = String.format("%20.20s",user.getEmail());
-			String password = String.format("%20.20s",user.getPassword());
+			String userName = String.format("%1$-" + 20 + "s", user.getNameOfUser());
+			String password = String.format("%1$-" + 20 + "s",user.getPassword());
+			String email = String.format("%1$-" + 20 + "s", user.getEmail());
 			
-			String query = "INSERT INTO User(NameOfUser, Email,Password) VALUES(?,?,?)";
+			String query = "INSERT INTO Student(NameOfStudent, Email, Password) VALUES(?,?,?)";
 			pstmt = currentCon.prepareStatement(query);
 			pstmt.setString(1, userName);
 			pstmt.setString(2, email);

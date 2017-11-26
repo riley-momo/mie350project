@@ -51,24 +51,22 @@ public class MenuController extends HttpServlet {
 		*/
 		User owner = new User();
 		String forward = "";
-		//int ID = Integer.valueOf(request.getParameter("OwnerID"));
-		//owner.setUserID(ID);
 		String action = request.getParameter("action");
-
-		if (action.equalsIgnoreCase("delete")) {
-			forward = DELETE; //change in JSP
-		} else if (action.equalsIgnoreCase("insert")) {
-			forward = INSERT;
-		} else if (action.equalsIgnoreCase("edit")) {
-			forward = EDIT;
-		} else if (action.equalsIgnoreCase("listRestaurant")) {
-			forward = LIST_MENU_ITEMS;
-			request.setAttribute("menus", dao.getAllItems());
-		} else if(action.equalsIgnoreCase("listOwnersItems")) {
+		if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
 			request.setAttribute("menus", dao.getOwnerItems(owner.getEmail()));
-		}
-		else {
+		} 
+//		else if (action.equalsIgnoreCase("delete")) {
+//			forward = DELETE; //change in JSP
+//		} else if (action.equalsIgnoreCase("insert")) {
+//			forward = INSERT;
+//		} else if (action.equalsIgnoreCase("edit")) {
+//			forward = EDIT;
+//		} 
+		else if (action.equalsIgnoreCase("listRestaurant")) {
+			forward = LIST_MENU_ITEMS;
+			request.setAttribute("menus", dao.getAllItems());
+		} else {
 			forward = INSERT;
 		}
 

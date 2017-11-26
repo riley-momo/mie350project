@@ -33,10 +33,10 @@ public class MenuDao {
 		 */
 		try {
 			int resID = menu.getRestaurantID();
-			String name = menu.getMenuName();
+			String name = String.format("%1$-" + 255 + "s", menu.getMenuName());
 			int calories = menu.getCalories();
-			String category = menu.getCategory();
-			String diet = menu.getDietary();
+			String category = String.format("%1$-" + 255 + "s",menu.getCategory());
+			String diet = String.format("%1$-" + 255 + "s",menu.getDietary());
 			double price = menu.getPrice();
 			int promoKey = menu.getPromoKey();
 
