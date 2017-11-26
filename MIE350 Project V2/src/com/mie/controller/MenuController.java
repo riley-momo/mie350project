@@ -52,6 +52,7 @@ public class MenuController extends HttpServlet {
 		User owner = new User();
 		String forward = "";
 		String action = request.getParameter("action");
+		
 		if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
 			request.setAttribute("menus", dao.getOwnerItems(owner.getEmail()));

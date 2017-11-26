@@ -64,13 +64,12 @@
 					<li><b>Delete</b> items from a menu</li>
 					<li><b>Modify</b> menu item information</li>
 			</ul>
-			<form action = "MenuController?action=listOwnersItems">
-				<input type="submit" 
-						class="btn btn-info" value="My Menu" style="font-size: 18px;" >
-						<br>
-						<br>
-						<br>
-			</form>
+			
+			
+			<a href="/mie350webapp/MenuController?action=listOwnersItems" class="buttonList">My Menu</a>
+			<br>
+			<br>
+			<br>
 					
 			<ul style="color:black;">
 					<li ><b>Modify</b> your account details</li>
