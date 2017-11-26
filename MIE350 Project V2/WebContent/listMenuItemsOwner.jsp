@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	pageEncoding="EUC-KR" import="com.mie.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
+
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
 <%
 	session = request.getSession();
 	System.out.println(session);
@@ -12,7 +12,6 @@
 		response.sendRedirect("login.jsp");
 	}
 %>
-
 
 <head>
 <title>All Menu Items</title>
@@ -38,6 +37,16 @@
 <body>
 
 	<%@ include file="navbar_loggedin.jsp"%>
+
+	<%
+		User user = (User) session.getAttribute("currentSessionUser");
+		String username = (String) session.getAttribute("userName");
+		String email= (String) session.getAttribute("email");
+		
+	%>
+	
+
+
 <header class="intro-AllMenuItems">
 	<div class="container-fluid text-center">
 		<div class="row content">
@@ -48,8 +57,8 @@
 				<h1>My Menu Items</h1>
 
 				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
-
-		
+<a class="btn btn-primary" href="StudentController?action=insert">Add A Menu Item!</a> 
+		<br> <br>
 		<div class="table-responsive">  
 				<table border=1 class="sortable">
 					<thead>
