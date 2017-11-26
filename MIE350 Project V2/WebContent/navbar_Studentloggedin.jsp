@@ -20,7 +20,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="OwnerLogged.jsp">Home</a>
+                        <a class="page-scroll" href="StudentLogged.jsp">Home</a>
                     </li>
          
 					<li><a href="/mie350webapp/MenuController?action=listRestaurant">My Menu</a></li>
