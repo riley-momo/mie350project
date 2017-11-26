@@ -28,7 +28,7 @@ public class MenuController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static String INSERT = "/addMenuItem.jsp";
-	private static String EDIT = "/editMenuItems.jsp";
+	private static String EDIT = "/editMenuItem.jsp";
 	private static String LIST_MENU_ITEMS = "/listMenuItems.jsp";
 	private static String LIST_OWNER_MENU_ITEMS = "/listMenuItemsOwner.jsp";
 	private static String DELETE = "/deleteMenuItem.jsp";
@@ -67,11 +67,13 @@ public class MenuController extends HttpServlet {
 		}
 //		else if (action.equalsIgnoreCase("delete")) {
 //			forward = DELETE; //change in JSP
-//		} else if (action.equalsIgnoreCase("insert")) {
-//			forward = INSERT;
-//		} else if (action.equalsIgnoreCase("edit")) {
-//			forward = EDIT;
-//		} 
+//		}
+	else if (action.equalsIgnoreCase("insert")) {
+			forward = INSERT;
+	}
+	else if (action.equalsIgnoreCase("edit")) {
+			forward = EDIT;
+		} 
 		else if (action.equalsIgnoreCase("listRestaurant")) {
 			forward = LIST_MENU_ITEMS;
 			request.setAttribute("menus", dao.getAllItems());
@@ -79,9 +81,9 @@ public class MenuController extends HttpServlet {
 			forward = INSERT;
 		}
 
+		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
-
 
 }

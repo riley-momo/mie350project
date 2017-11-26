@@ -95,6 +95,21 @@
 
 }
 
+
+.intro-addMenuItem{
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 70px 250px;
+    text-align: left;
+    color: #CCC;
+ background: url('../img/login2.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+
+}
+
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;

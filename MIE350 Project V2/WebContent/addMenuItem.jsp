@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - Add A Student</title>
+<title>Add A Menu Item!</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,54 +25,57 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle2.css">
+
 </head>
 <body>
 
 	<%@ include file="navbar_loggedin.jsp"%>
 
-	<%
-		Member member = (Member) session.getAttribute("currentSessionUser");
-
-		String username = (String) session.getAttribute("username");
-		String firstname = (String) session.getAttribute("firstname");
-		String lastname = (String) session.getAttribute("lastname");
+		<%
+		User user = (User) session.getAttribute("currentSessionUser");
+		String username = (String) session.getAttribute("userName");
+		String email= (String) session.getAttribute("email");
+		
 	%>
-
+<header class="intro-addMenuItem">
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<%@ include file="sidebar_loggedin.jsp"%>
 			<div class="col-sm-8 text-left">
-				<h1>Add A Student</h1>
-
-				<script>
-					$(function() {
-						$('input[name=dob]').datepicker();
-					});
-				</script>
-				Note: the Student ID is a fixed field and cannot be changed. <br>
+				<h1 style="font-size:60px;">Add A Menu Item</h1>
+			
+			 <br>
 				<br>
-
-				<form method="POST" action='StudentController' name="frmAddUser">
-					Student ID*: <input type="text" readonly="readonly"
-						name="studentid" value="<c:out value="${student.studentid}" />"><br>
-					First Name: <input type="text" name="firstName"
+				
+				
+				
+				
+<!-- **********************Backend Info that needs to be updated******************************* -->
+				<form method="POST" action='MenuController' name="frmAddItem">
+					Your Email*: <input type="text" readonly="readonly"
+						name="userName" value="<c:out value="${student.studentid}" />"><br>
+					Item Name: <input type="text" name="firstName"
 						value="<c:out value="${student.firstName}" />"><br>
-					Last Name : <input type="text" name="lastName"
-						value="<c:out value="${student.lastName}" />"><br>DOB
-					(MM/dd/yyyy): <input type="text" name="dob"
-						value="<fmt:formatDate pattern="MM/dd/yyyy" value="${student.dob}" />"><br>
-					Email: <input type="text" name="email"
+					Price : <input type="text" name="lastName"
+						value="<c:out value="${student.lastName}" />"><br>					
+					Calories: <input type="text" name="email"
+						value="<c:out value="${student.email}" />"><br> <br>
+					Category: <input type="text" name="email"
+						value="<c:out value="${student.email}" />"><br> <br>
+					Dietary Restrictions: <input type="text" name="email"
 						value="<c:out value="${student.email}" />"><br> <br>
 					<input type="submit" class="btn btn-info" value="Submit" />
 				</form>
+<!-- **********************Backend Info that needs to be updated******************************* -->
+
+
+
 
 			</div>
-			<div class="col-sm-2 sidenav">
-				<!-- You can put right sidebar links here if you want to. -->
-			</div>
+			
 		</div>
 	</div>
-
+	</header>
 	<%@ include file="footer.jsp"%>
 
 

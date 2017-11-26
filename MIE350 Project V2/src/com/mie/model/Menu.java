@@ -16,6 +16,16 @@ public class Menu {
 	private String category;
 	private String dietary;
 	private int promoKey;
+	
+//	**
+	private String ownerEmail;
+	
+//**
+	public String getOwnerEmail(){
+	return ownerEmail;
+	}
+	
+	
 
 	public String getMenuName() {
 		return itemName;

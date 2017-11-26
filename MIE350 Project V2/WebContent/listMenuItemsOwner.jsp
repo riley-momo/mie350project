@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR" import="com.mie.model.*"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
@@ -11,6 +14,7 @@
 	if (session.getAttribute("userName") == null) {
 		response.sendRedirect("login.jsp");
 	}
+	
 %>
 
 <head>
@@ -57,7 +61,7 @@
 				<h1>My Menu Items</h1>
 
 				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
-<a class="btn btn-primary" href="StudentController?action=insert">Add A Menu Item!</a> 
+<a class="btn btn-primary" href="MenuController?action=insert">Add A Menu Item!</a> 
 		<br> <br>
 		<div class="table-responsive">  
 				<table border=1 class="sortable">
@@ -69,6 +73,7 @@
 							<th>Calories</th>
 							<th>Category</th>
 							<th>Dietary Restrictions</th>
+							<th colspan=2>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -89,6 +94,9 @@
 								
 								<td align="center"><c:out value="${menu.getCategory()}" /></td>
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
+								
+								<td align="center"><a class="btn btn-warning"
+									href="MenuController?action=edit&studentId=<c:out value="${student.getStudentid()}"/>">Update</a></td>
 
 							</tr>
 						</c:forEach>
