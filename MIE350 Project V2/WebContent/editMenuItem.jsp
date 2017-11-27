@@ -3,7 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
+<%
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("userName") == null) {
+		response.sendRedirect("login.jsp");
+	}
+	
+%>
 <html lang="en">
 <head>
 <title>Edit Menu Item</title>
@@ -58,13 +66,13 @@
 						name="restaurantName" value="<c:out value="${menu.restaurantName}" />"><br>
 					Item Name*: <input type="text" readonly = "readOnly" 
 					name="itemName" value="<c:out value="${menu.itemName}" />"><br>
-					Price : <input type="text" name="price"
-						value="<c:out value="${menu.price}" />"><br>					
-					Calories: <input type="text" name="calories"
+					Price (required) : <input type="text" name="price" pattern = "^\d+(.\d{1,2})?$" minLength= "1"
+						required = "required" value="<c:out value="${menu.price}" />"><br>					
+					Calories: <input type="number" name="calories" max="99999" min="0"
 						value="<c:out value="${menu.calories}" />"><br> <br>
-					Category: <input type="text" name="category"
-						value="<c:out value="${menu.category}" />"><br> <br>
-					Dietary Restrictions: <input type="text" name="dietary"
+					Category (required) : <input type="text" name="category" minLength = "1" maxlength="60"
+						required = "required" value="<c:out value="${menu.category}" />"><br> <br>
+					Dietary Restrictions: <input type="text" name="dietary" maxlength="60"
 						value="<c:out value="${menu.dietary}" />"><br> <br>
 					<input type="submit" class="btn btn-info" value="Submit" />
 				</form>

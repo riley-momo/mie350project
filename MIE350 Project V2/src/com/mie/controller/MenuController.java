@@ -33,7 +33,7 @@ public class MenuController extends HttpServlet {
 	private static String LIST_MENU_ITEMS = "/listMenuItems.jsp";
 	private static String LIST_OWNER_MENU_ITEMS = "/listMenuItemsOwner.jsp";
 	private static String SEARCH_MENU_ITEMS = "/listMenuItemsStudent.jsp";
-	
+	private static String LOGIN = "/login.jsp";
 
 	private MenuDao dao;
 
@@ -55,11 +55,18 @@ public class MenuController extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action"); 
 		if(action.equalsIgnoreCase("listOwnersItems")) {
-			forward = LIST_OWNER_MENU_ITEMS;
-			List<Menu> menus = dao.getOwnerItems((String)request.getSession().getAttribute("Email"));
-			request.setAttribute("menus", menus);
-			request.setAttribute("restaurantID", menus.get(0).getRestaurantID());
-			request.setAttribute("restaurantName", menus.get(0).getRestaurantName());
+			if ((String)request.getSession().getAttribute("Email") == null 
+					|| ((String)request.getSession().getAttribute("Email")).isEmpty()){
+				forward = LOGIN;
+			}
+			else {
+				forward = LIST_OWNER_MENU_ITEMS;
+				List<Menu> menus = dao.getOwnerItems((String)request.getSession().getAttribute("Email"));
+				request.setAttribute("menus", menus);
+				request.setAttribute("restaurantID", menus.get(0).getRestaurantID());
+				request.setAttribute("restaurantName", menus.get(0).getRestaurantName());
+			}
+			
 		} 
 		else if (action.equalsIgnoreCase("searchMenuItems")){
 			forward = SEARCH_MENU_ITEMS;
@@ -86,7 +93,7 @@ public class MenuController extends HttpServlet {
 			String itemName = request.getParameter("itemName");
 			Menu menu = dao.getMenuItemByRestaurantIDAndItemName(restaurantID, itemName);
 			request.setAttribute("menu", menu);
-			request.setAttribute("edit",false);
+			request.setAttribute("edit",true);
 		} 
 		else if (action.equalsIgnoreCase("listRestaurant")) {
 			forward = LIST_MENU_ITEMS;
@@ -126,13 +133,26 @@ public class MenuController extends HttpServlet {
 		menu.setRestaurantID(Integer.parseInt(request.getParameter("restaurantId")));
 		menu.setRestaurantName(request.getParameter("restaurantName"));
 		menu.setItemName(request.getParameter("itemName"));
-		menu.setPrice(Double.parseDouble(request.getParameter("price")));
-		menu.setCalories(Integer.parseInt(request.getParameter("calories")));
+		if (! (request.getParameter("price").isEmpty() ||request.getParameter("price") == null) ){
+			menu.setPrice(Double.parseDouble(request.getParameter("price")));
+		}
+		//If price field is left empty, set it to zero
+		else {
+			menu.setPrice(0);
+		}
+		
+		if (! (request.getParameter("calories").isEmpty() ||request.getParameter("calories") == null) ){
+			menu.setCalories(Integer.parseInt(request.getParameter("calories")));
+		}
+		//If calorie field is left blank we set it to -1 which the front-end interprets as blank
+		else {
+			menu.setCalories(-1);
+		}
 		menu.setCategory(request.getParameter("category"));
 		menu.setDietary(request.getParameter("dietary"));
-		boolean edit = Boolean.getBoolean(request.getParameter("edit"));
+		boolean edit = (request.getParameter("edit").equalsIgnoreCase("true"));
 		
-		 //System.out.println(request.getParameter("edit"));
+		//System.out.println(request.getParameter("edit"));
 		 
 		/**
 		 * If the edit attribute has been set to false, 
