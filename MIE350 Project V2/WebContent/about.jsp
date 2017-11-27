@@ -49,13 +49,14 @@
 			
 				<div class="col-md-6 profile-info">	
 			<div class="col-md-4">
-			<div class="company-header-avatar" style="background-image: url(img/profiles/sophieFu.jpg); "></div></div>
+			<div class="company-header-avatar" style="background-image: url(img/profiles/rileyMoher.jpg); "></div></div>
 			<div class="col-md-8">
 			<h4 style="margin-bottom: 5px; text-transform: uppercase; font-weight:700; font-size:24px;">Riley Moher</h4>
 			<h5 class="text-muted" style="margin-bottom: 5px; text-transform: uppercase;">Back-End Lead</h5>
 				<p style="font-size: 12px">
 				Riley is a third-year industrial engineering student at the University of Toronto. 
-				He is interested in back-end development, and database management.
+				He is interested about software development, particularly Blockchain, Ethereum smart contracts and Java.
+				Riley is also passionate about cars, photography and tech. 
 				</p>
 			</div>
 			</div>
@@ -112,7 +113,7 @@ processes and support business decision within companies.
 			
 				<div class="col-md-6 profile-info">	
 			<div class="col-md-4">
-			<div class="company-header-avatar" style="background-image: url(img/profiles/sophieFu.jpg); "></div></div>
+			<div class="company-header-avatar" style="background-image: url(img/profiles/hishamRadwan.png); "></div></div>
 			<div class="col-md-8">
 			<h4 style="margin-bottom: 5px; text-transform: uppercase; font-weight:700; font-size:24px;">Hisham Radwan</h4>
 			<h5 class="text-muted" style="margin-bottom: 5px; text-transform: uppercase;">Database Designer</h5>
