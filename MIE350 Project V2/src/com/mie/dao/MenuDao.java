@@ -80,23 +80,18 @@ public class MenuDao {
 		 * into the database.
 		 */
 		try{
-			int resID = menu.getRestaurantID();
-			String name = menu.getItemName();
-			int calories = menu.getCalories();
-			String category = menu.getCategory();
-			String diet = menu.getDietary();
-			double price = menu.getPrice();
-			int promoKey = menu.getPromoKey();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"UPDATE Menu SET Price=?, Calories=?, Category=?, DietaryRestrictions=?"
+							+ " WHERE ItemName=? AND RestaurantID=?");
 			
+			preparedStatement.setDouble(1, menu.getPrice());
+			preparedStatement.setInt(2,menu.getCalories());
+			preparedStatement.setString(3, menu.getCategory());
+			preparedStatement.setString(4, menu.getDietary());
+			preparedStatement.setString(5, menu.getItemName());
+			preparedStatement.setInt(6, menu.getRestaurantID());
 			
-			String query = "UPDATE Menu SET Price = "+ price + 
-					", Category = '" + category + "', Calories = " + calories + ", DietaryRestrictions = '" + 
-					diet + "', promoKey = "+ promoKey + " WHERE RestaurantID = " + resID + " AND ItemName = '"
-					+ name +"';";
-			
-			Statement stmt = connection.createStatement();
-			stmt.execute(query);
-			
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
