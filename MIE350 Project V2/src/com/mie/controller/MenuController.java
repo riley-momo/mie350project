@@ -32,7 +32,6 @@ public class MenuController extends HttpServlet {
 	private static String EDIT = "/editMenuItem.jsp";
 	private static String LIST_MENU_ITEMS = "/listMenuItems.jsp";
 	private static String LIST_OWNER_MENU_ITEMS = "/listMenuItemsOwner.jsp";
-	private static String DELETE = "/deleteMenuItem.jsp";
 	private static String SEARCH_MENU_ITEMS = "/listMenuItemsStudent.jsp";
 	
 
@@ -69,9 +68,7 @@ public class MenuController extends HttpServlet {
 			
 			//request.setAttribute("menus", dao.getFilteredItems(price, calories, category, diet));
 		}
-//		else if (action.equalsIgnoreCase("delete")) {
-//			forward = DELETE; //change in JSP
-//		}
+
 	else if (action.equalsIgnoreCase("insert")) {
 			forward = INSERT;
 			int restaurantID = Integer.parseInt(request.getParameter("restaurantId"));
