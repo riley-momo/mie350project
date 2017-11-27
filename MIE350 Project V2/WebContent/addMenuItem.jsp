@@ -51,19 +51,21 @@
 				
 				
 <!-- **********************Backend Info that needs to be updated******************************* -->
-				<form method="POST" action='MenuController' name="frmAddItem">
-					Your Email*: <input type="text" readonly="readonly"
-						name="userName" value="<c:out value="${student.studentid}" />"><br>
-					Item Name: <input type="text" name="firstName"
-						value="<c:out value="${student.firstName}" />"><br>
-					Price : <input type="text" name="lastName"
-						value="<c:out value="${student.lastName}" />"><br>					
-					Calories: <input type="text" name="email"
-						value="<c:out value="${student.email}" />"><br> <br>
-					Category: <input type="text" name="email"
-						value="<c:out value="${student.email}" />"><br> <br>
-					Dietary Restrictions: <input type="text" name="email"
-						value="<c:out value="${student.email}" />"><br> <br>
+					<form method="POST" action='MenuController' name="frmAddItem">
+					Restaurant ID*: <input type="text" readonly="readonly"
+						name="restaurantId" value="<c:out value="${menu.restaurantID}" />"><br>
+					Restaurant Name*: <input type="text" readonly="readonly"
+						name="restaurantName" value="<c:out value="${menu.restaurantName}" />"><br>
+					Item Name: <input type="text"
+					name="itemName" value="<c:out value="${menu.itemName}" />"><br>
+					Price : <input type="text" name="price"
+						value="<c:out value="${menu.price}" />"><br>					
+					Calories: <input type="text" name="calories"
+						value="<c:out value="${menu.calories}" />"><br> <br>
+					Category: <input type="text" name="category"
+						value="<c:out value="${menu.category}" />"><br> <br>
+					Dietary Restrictions: <input type="text" name="dietary"
+						value="<c:out value="${menu.dietary}" />"><br> <br>
 					<input type="submit" class="btn btn-info" value="Submit" />
 				</form>
 <!-- **********************Backend Info that needs to be updated******************************* -->

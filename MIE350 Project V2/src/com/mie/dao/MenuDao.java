@@ -32,21 +32,20 @@ public class MenuDao {
 		 * This method adds a new menu item to the database.
 		 */
 		try {
-			int resID = menu.getRestaurantID();
-			String name = String.format("%1$-" + 255 + "s", menu.getItemName());
-			int calories = menu.getCalories();
-			String category = String.format("%1$-" + 255 + "s",menu.getCategory());
-			String diet = String.format("%1$-" + 255 + "s",menu.getDietary());
-			double price = menu.getPrice();
-			int promoKey = menu.getPromoKey();
-
-			String query = "INSERT INTO MENU VALUES (" + name + ", " + resID + ", " + price + ", " +
-							calories + ", " + category + ", " + diet + ", " + promoKey + ");" ;
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"INSERT INTO Menu"
+					+ "(ItemName,RestaurantID,Price,Calories,Category,DietaryRestictions)"
+					+ " VALUES (?, ?, ?, ?, ?, ? )");
 			
-			//if the menu item already exists, an error will be raised and this action will fail
+			preparedStatement.setString(1, menu.getItemName());
+			preparedStatement.setInt(2, menu.getRestaurantID());
+			preparedStatement.setDouble(3, menu.getPrice());
+			preparedStatement.setInt(4,menu.getCalories());
+			preparedStatement.setString(5, menu.getCategory());
+			preparedStatement.setString(6, menu.getDietary());
+		
 			
-			Statement stmt = connection.createStatement();
-			stmt.execute(query);
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -63,7 +62,7 @@ public class MenuDao {
 			int resID = menu.getRestaurantID();
 			String name = menu.getItemName();
 			
-			String query = "DELETE FROM Menu WHERE Name = '" + name + "' AND RestaurantID = " + resID + ";";
+			String query = "DELETE FROM Menu WHERE ItemName = '" + name + "' AND RestaurantID = " + resID + ";";
 			
 			Statement stmt = connection.createStatement();
 			stmt.execute(query);
@@ -84,6 +83,13 @@ public class MenuDao {
 					"UPDATE Menu SET Price=?, Calories=?, Category=?, DietaryRestrictions=?"
 							+ " WHERE ItemName=? AND RestaurantID=?");
 			
+//			Statement statement = connection.createStatement();
+//			ResultSet rs = statement.executeQuery(
+//					"SELECT * FROM Menu WHERE ItemName="+ menu.getItemName()+ " AND RestaurantID=" + menu.getRestaurantID()) ;
+//			if (!rs.next()){
+//				System.out.println("fuck");
+//			}
+//			
 			preparedStatement.setDouble(1, menu.getPrice());
 			preparedStatement.setInt(2,menu.getCalories());
 			preparedStatement.setString(3, menu.getCategory());

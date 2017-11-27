@@ -51,6 +51,8 @@
 				
 <!-- **********************Backend Info that needs to be updated******************************* -->
 				<form method="POST" action='MenuController' name="frmAddItem">
+					Restaurant ID*: <input type="text" readonly="readonly"
+						name="restaurantId" value="<c:out value="${menu.restaurantID}" />"><br>
 					Restaurant Name*: <input type="text" readonly="readonly"
 						name="restaurantName" value="<c:out value="${menu.restaurantName}" />"><br>
 					Item Name*: <input type="text" readonly = "readOnly" 

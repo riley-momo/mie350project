@@ -61,7 +61,9 @@
 				<h1>My Menu Items</h1>
 
 				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
-<a class="btn btn-primary" href="MenuController?action=insert">Add A Menu Item!</a> 
+<a class="btn btn-primary" href="MenuController?action=insert
+&restaurantId=<c:out value="${restaurantID}"/>
+&restaurantName=<c:out value="${restaurantName}"/>">Add A Menu Item!</a> 
 		<br> <br>
 		<div class="table-responsive">  
 				<table border=1 class="sortable">

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,7 +58,10 @@ public class MenuController extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
-			request.setAttribute("menus", dao.getOwnerItems((String)request.getSession().getAttribute("Email")));
+			List<Menu> menus = dao.getOwnerItems((String)request.getSession().getAttribute("Email"));
+			request.setAttribute("menus", menus);
+			request.setAttribute("restaurantID", menus.get(0).getRestaurantID());
+			request.setAttribute("restaurantName", menus.get(0).getRestaurantName());
 		} 
 		else if (action.equalsIgnoreCase("searchMenuItems")){
 			forward = SEARCH_MENU_ITEMS;
@@ -71,6 +75,12 @@ public class MenuController extends HttpServlet {
 //		}
 	else if (action.equalsIgnoreCase("insert")) {
 			forward = INSERT;
+			int restaurantID = Integer.parseInt(request.getParameter("restaurantId"));
+			String restaurantName = request.getParameter("restaurantName");
+			Menu menu = new Menu();
+			menu.setRestaurantID(restaurantID);
+			menu.setRestaurantName(restaurantName);
+			request.setAttribute("menu", menu);
 	}
 	else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
@@ -101,6 +111,7 @@ public class MenuController extends HttpServlet {
 		 */
 		//System.out.print("test");
 		Menu menu = new Menu();
+		menu.setRestaurantID(Integer.parseInt(request.getParameter("restaurantId")));
 		menu.setRestaurantName(request.getParameter("restaurantName"));
 		menu.setPrice(Double.parseDouble(request.getParameter("price")));
 		menu.setCalories(Integer.parseInt(request.getParameter("calories")));
@@ -124,12 +135,16 @@ public class MenuController extends HttpServlet {
 			dao.updateMenuItem(menu);
 		}
 		/**
-		 * Once the student has been added or updated, the page will redirect to
-		 * the listing of students.
+		 * Once the Menu Item has been added or updated, the page will redirect to
+		 * the listing of Menu Items.
 		 */
-		RequestDispatcher view = request
-				.getRequestDispatcher(LIST_OWNER_MENU_ITEMS);
-		request.setAttribute("menus", dao.getOwnerItems((String)request.getSession().getAttribute("email")));
+		RequestDispatcher view = request.getRequestDispatcher(LIST_OWNER_MENU_ITEMS);
+		
+		List<Menu> menus = dao.getOwnerItems((String)request.getSession().getAttribute("Email"));
+		request.setAttribute("menus", menus);
+		request.setAttribute("restaurantID", menus.get(0).getRestaurantID());
+		request.setAttribute("restaurantName", menus.get(0).getRestaurantName());
+		
 		view.forward(request, response);
 	}
 }
