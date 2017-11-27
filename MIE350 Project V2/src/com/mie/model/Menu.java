@@ -5,7 +5,7 @@ import java.util.Date;
 public class Menu {
 	/**
 	 * This class contains all of the relevant information, and getter/setter
-	 * methods for the Student object.
+	 * methods for the Menu object.
 	 */
 
 	private String itemName;
@@ -27,11 +27,11 @@ public class Menu {
 	
 	
 
-	public String getMenuName() {
+	public String getItemName() {
 		return itemName;
 	}
 
-	public void setMenuName(String name) {
+	public void setItemName(String name) {
 		this.itemName = name;
 	}
 

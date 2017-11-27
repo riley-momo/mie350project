@@ -77,7 +77,7 @@
 					<tbody>
 						<c:forEach items="${menus}" var="menu">
 							<tr>
-								<td align="center"><c:out value="${menu.getMenuName()}" /></td>
+								<td align="center"><c:out value="${menu.getItemName()}" /></td>
 								<td align="center"><c:out value="${menu.getRestaurantName()}" /></td>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								

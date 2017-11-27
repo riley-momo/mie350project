@@ -67,7 +67,7 @@ public class RatingController {
 		/**
 		Redirect to appropriate page based on valid/invalid result
 		 */
-
+		
 		view.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request,
@@ -79,10 +79,14 @@ public class RatingController {
 		User user = (User) session.getAttribute("currentSessionUser");
 		int restaurantID =  Integer.parseInt(request.getParameter("restaurantToRate"));
 		int rating = Integer.parseInt(request.getParameter("rating"));
-		
-		dao.addRating(user, restaurantID, rating);
-		
-		RequestDispatcher view= request.getRequestDispatcher(RATE_SUCCESS);
+		RequestDispatcher view;
+		if (rating > 5) {
+			view = request.getRequestDispatcher(INVALID_RATE);
+		}
+		else {
+			view= request.getRequestDispatcher(RATE_SUCCESS);
+			dao.addRating(user, restaurantID, rating);
+		}
 		view.forward(request, response);
 	}
 

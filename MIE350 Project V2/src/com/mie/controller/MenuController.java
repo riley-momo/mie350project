@@ -74,6 +74,10 @@ public class MenuController extends HttpServlet {
 	}
 	else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
+			int restaurantID = Integer.parseInt(request.getParameter("restaurantId"));
+			String itemName = request.getParameter("itemName");
+			Menu menu = dao.getMenuItemByRestaurantIDAndItemName(restaurantID, itemName);
+			request.setAttribute("menu", menu);
 		} 
 		else if (action.equalsIgnoreCase("listRestaurant")) {
 			forward = LIST_MENU_ITEMS;
@@ -86,5 +90,44 @@ public class MenuController extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
+	
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
+		/**
+		 * This method retrieves all of the information entered in the form on
+		 * the addMenuItem.jsp or the editMenuItem.jsp pages.
+		 */
+		Menu menu = new Menu();
+		menu.setRestaurantName(request.getParameter("restaurantName"));
+		menu.setPrice(Double.parseDouble(request.getParameter("price")));
+		menu.setCalories(Integer.parseInt(request.getParameter("calories")));
+		menu.setCategory(request.getParameter("category"));
+	
+		
+		String itemName = request.getParameter("restaurantName");
+		/**
+		 * If the 'itemName' field in the form is empty, the menu item will be added
+		 * to the menu database
+		 */
+		if (itemName == null || itemName.isEmpty()) {
+			dao.addMenuItem(menu);
+			System.out.println("oops");
+		} else {
+			/**
+			 * Otherwise, the field is already field and
+			 * the user is editing an existing menu item
+			 */
+			menu.setItemName(itemName);
+			dao.updateMenuItem(menu);
+		}
+		/**
+		 * Once the student has been added or updated, the page will redirect to
+		 * the listing of students.
+		 */
+		RequestDispatcher view = request
+				.getRequestDispatcher(LIST_OWNER_MENU_ITEMS);
+		request.setAttribute("menus", dao.getOwnerItems((String)request.getSession().getAttribute("email")));
+		view.forward(request, response);
+	}
 }

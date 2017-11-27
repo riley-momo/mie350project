@@ -79,7 +79,7 @@
 					<tbody>
 						<c:forEach items="${menus}" var="menu">
 							<tr>
-								<td align="center"><c:out value="${menu.getMenuName()}" /></td>
+								<td align="center"><c:out value="${menu.getItemName()}" /></td>
 								<td align="center"><c:out value="${menu.getRestaurantName()}" /></td>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								
@@ -96,7 +96,10 @@
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
 								
 								<td align="center"><a class="btn btn-warning"
-									href="MenuController?action=edit&studentId=<c:out value="${student.getStudentid()}"/>">Update</a></td>
+									href="MenuController?action=edit
+									&itemName=<c:out value="${menu.getItemName()}"/>
+									&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
+									">Update</a></td>
 
 							</tr>
 						</c:forEach>

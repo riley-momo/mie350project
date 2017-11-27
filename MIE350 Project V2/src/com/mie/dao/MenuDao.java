@@ -33,7 +33,7 @@ public class MenuDao {
 		 */
 		try {
 			int resID = menu.getRestaurantID();
-			String name = String.format("%1$-" + 255 + "s", menu.getMenuName());
+			String name = String.format("%1$-" + 255 + "s", menu.getItemName());
 			int calories = menu.getCalories();
 			String category = String.format("%1$-" + 255 + "s",menu.getCategory());
 			String diet = String.format("%1$-" + 255 + "s",menu.getDietary());
@@ -61,7 +61,7 @@ public class MenuDao {
 		 */
 		try{
 			int resID = menu.getRestaurantID();
-			String name = menu.getMenuName();
+			String name = menu.getItemName();
 			
 			String query = "DELETE FROM Menu WHERE Name = '" + name + "' AND RestaurantID = " + resID + ";";
 			
@@ -81,7 +81,7 @@ public class MenuDao {
 		 */
 		try{
 			int resID = menu.getRestaurantID();
-			String name = menu.getMenuName();
+			String name = menu.getItemName();
 			int calories = menu.getCalories();
 			String category = menu.getCategory();
 			String diet = menu.getDietary();
@@ -114,7 +114,7 @@ public class MenuDao {
 			ResultSet rs = statement.executeQuery("SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE Menu.RestaurantID = Restaurant.RestaurantID");
 			while (rs.next()) {
 				Menu menu = new Menu();
-				menu.setMenuName(rs.getString("ItemName"));
+				menu.setItemName(rs.getString("ItemName"));
 				menu.setRestaurantName(rs.getString("Name_of_Restaurant"));
 				menu.setRestaurantID(rs.getInt("RestaurantID"));
 				menu.setPrice(rs.getDouble("Price"));
@@ -232,7 +232,7 @@ public class MenuDao {
 			ResultSet rs = statement.executeQuery(query);
 			while (rs.next()) {
 				Menu menu = new Menu();
-				menu.setMenuName(rs.getString("ItemName"));
+				menu.setItemName(rs.getString("ItemName"));
 				menu.setRestaurantName(rs.getString("Name_of_Restaurant"));
 				menu.setPrice(rs.getDouble("Price"));
 				menu.setCalories(rs.getInt("Calories"));
@@ -260,8 +260,8 @@ public class MenuDao {
 					+ ownerEmail + "';");
 			while (rs.next()) {
 				Menu menu = new Menu();
-				menu.setMenuName(rs.getString("ItemName"));
-				//menu.setRestaurantID(rs.getInt("RestaurantID"));
+				menu.setItemName(rs.getString("ItemName"));
+				menu.setRestaurantID(rs.getInt("RestaurantID"));
 				menu.setRestaurantName(rs.getString("Name_of_Restaurant"));
 				menu.setPrice(rs.getDouble("Price"));
 				menu.setCalories(rs.getInt("Calories"));
@@ -276,6 +276,38 @@ public class MenuDao {
 		}
 		return menus;
 	}
+
+	public Menu getMenuItemByRestaurantIDAndItemName(int restaurantID,
+			String itemName) {
+		Menu menu = new Menu();
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("SELECT * FROM Menu JOIN Restaurant ON Menu.RestaurantID = Restaurant.RestaurantID WHERE RestaurantID = ? AND ItemName = ?");
+			preparedStatement.setInt(1, restaurantID);
+			preparedStatement.setString(2, itemName);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if (rs.next()) {
+				menu.setRestaurantID(rs.getInt("RestaurantID"));
+				menu.setItemName(rs.getString("ItemName"));
+				menu.setRestaurantName(rs.getString("Name_of_Restaurant"));
+				if (rs.getInt("Calories") > 0 ){
+					menu.setCalories(rs.getInt("Calories"));
+				}
+				menu.setPrice(rs.getDouble("Price"));
+				menu.setCategory(rs.getString("Category"));
+				menu.setDietary(rs.getString("DietaryRestrictions"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return menu;
+	}
+	
+
+	
 	
 
 }
