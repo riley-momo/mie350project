@@ -36,7 +36,6 @@
 		User user = (User) session.getAttribute("currentSessionUser");
 		String username = (String) session.getAttribute("userName");
 		String email= (String) session.getAttribute("email");
-		
 	%>
 <header class="intro-addMenuItem">
 	<div class="container-fluid text-center">
@@ -52,6 +51,7 @@
 				
 <!-- **********************Backend Info that needs to be updated******************************* -->
 					<form method="POST" action='MenuController' name="frmAddItem">
+					<input type="hidden" name="edit" value="<c:out value="${edit}" />">
 					Restaurant ID*: <input type="text" readonly="readonly"
 						name="restaurantId" value="<c:out value="${menu.restaurantID}" />"><br>
 					Restaurant Name*: <input type="text" readonly="readonly"
@@ -66,10 +66,11 @@
 						value="<c:out value="${menu.category}" />"><br> <br>
 					Dietary Restrictions: <input type="text" name="dietary"
 						value="<c:out value="${menu.dietary}" />"><br> <br>
-					<input type="submit" class="btn btn-info" value="Submit" />
+					<input type="submit" class="btn btn-info" value="Submit"/>
+					
 				</form>
 <!-- **********************Backend Info that needs to be updated******************************* -->
-
+	
 
 
 

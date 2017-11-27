@@ -54,8 +54,7 @@ public class MenuController extends HttpServlet {
 		*/
 		User owner = new User();
 		String forward = "";
-		String action = request.getParameter("action");
-		
+		String action = request.getParameter("action"); 
 		if(action.equalsIgnoreCase("listOwnersItems")) {
 			forward = LIST_OWNER_MENU_ITEMS;
 			List<Menu> menus = dao.getOwnerItems((String)request.getSession().getAttribute("Email"));
@@ -81,6 +80,7 @@ public class MenuController extends HttpServlet {
 			menu.setRestaurantID(restaurantID);
 			menu.setRestaurantName(restaurantName);
 			request.setAttribute("menu", menu);
+			request.setAttribute("edit",false);
 	}
 	else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
@@ -89,6 +89,7 @@ public class MenuController extends HttpServlet {
 			String itemName = request.getParameter("itemName");
 			Menu menu = dao.getMenuItemByRestaurantIDAndItemName(restaurantID, itemName);
 			request.setAttribute("menu", menu);
+			request.setAttribute("edit",false);
 		} 
 		else if (action.equalsIgnoreCase("listRestaurant")) {
 			forward = LIST_MENU_ITEMS;
@@ -113,25 +114,26 @@ public class MenuController extends HttpServlet {
 		Menu menu = new Menu();
 		menu.setRestaurantID(Integer.parseInt(request.getParameter("restaurantId")));
 		menu.setRestaurantName(request.getParameter("restaurantName"));
+		menu.setItemName(request.getParameter("itemName"));
 		menu.setPrice(Double.parseDouble(request.getParameter("price")));
 		menu.setCalories(Integer.parseInt(request.getParameter("calories")));
 		menu.setCategory(request.getParameter("category"));
-	
+		menu.setDietary(request.getParameter("dietary"));
+		boolean edit = Boolean.getBoolean(request.getParameter("edit"));
 		
-		String itemName = request.getParameter("itemName");
+		 //System.out.println(request.getParameter("edit"));
+		 
 		/**
-		 * If the 'itemName' field in the form is empty, the menu item will be added
-		 * to the menu database
+		 * If the edit attribute has been set to false, 
+		 * we are adding a new menu item
 		 */
-		if (itemName == null || itemName.isEmpty()) {
+		if (!edit) {
 			dao.addMenuItem(menu);
-			//System.out.println("oops");
+			System.out.println("oops");
 		} else {
 			/**
-			 * Otherwise, the field is already field and
-			 * the user is editing an existing menu item
+			 * Otherwise, the user is editing an existing menu item
 			 */
-			menu.setItemName(itemName);
 			dao.updateMenuItem(menu);
 		}
 		/**

@@ -34,7 +34,7 @@ public class MenuDao {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"INSERT INTO Menu"
-					+ "(ItemName,RestaurantID,Price,Calories,Category,DietaryRestictions)"
+					+ "(ItemName,RestaurantID,Price,Calories,Category,DietaryRestrictions)"
 					+ " VALUES (?, ?, ?, ?, ?, ? )");
 			
 			preparedStatement.setString(1, menu.getItemName());
