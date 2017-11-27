@@ -94,7 +94,21 @@ public class MenuController extends HttpServlet {
 		else if (action.equalsIgnoreCase("listRestaurant")) {
 			forward = LIST_MENU_ITEMS;
 			request.setAttribute("menus", dao.getAllItems());
-		} else {
+		
+		}
+		else if (action.equalsIgnoreCase("delete")){
+			int restaurantID = Integer.parseInt(request.getParameter("restaurantId"));
+			String itemName = request.getParameter("itemName");
+			dao.deleteMenuItemByRestaurantIDAndItemName(restaurantID, itemName);
+			
+			forward = LIST_OWNER_MENU_ITEMS;
+			List<Menu> menus = dao.getOwnerItems((String)request.getSession().getAttribute("Email"));
+			request.setAttribute("menus", menus);
+			request.setAttribute("restaurantID", menus.get(0).getRestaurantID());
+			request.setAttribute("restaurantName", menus.get(0).getRestaurantName());
+			
+		}
+		else {
 			forward = INSERT;
 		}
 
@@ -129,7 +143,7 @@ public class MenuController extends HttpServlet {
 		 */
 		if (!edit) {
 			dao.addMenuItem(menu);
-			System.out.println("oops");
+			//System.out.println("oops");
 		} else {
 			/**
 			 * Otherwise, the user is editing an existing menu item

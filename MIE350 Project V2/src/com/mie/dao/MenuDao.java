@@ -306,6 +306,25 @@ public class MenuDao {
 
 		return menu;
 	}
+
+	public void deleteMenuItemByRestaurantIDAndItemName(int restaurantID,
+			String itemName) {
+		/**
+		 * This method deletes a menu item from the database.
+		 */
+		try {
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("DELETE from MENU where RestaurantID=? AND ItemName =?");
+			
+			preparedStatement.setInt(1, restaurantID);
+			preparedStatement.setString(2, itemName);
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 
 	

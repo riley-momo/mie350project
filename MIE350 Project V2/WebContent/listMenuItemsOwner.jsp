@@ -101,7 +101,12 @@
 									href="MenuController?action=edit
 									&itemName=<c:out value="${menu.getItemName()}"/>
 									&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
-									">Update</a></td>
+									">Edit</a></td>
+									<td align="center"><a class="btn btn-danger"
+									href="MenuController?action=delete
+									&itemName=<c:out value="${menu.getItemName()}"/>
+									&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
+									">Delete</a></td>
 
 							</tr>
 						</c:forEach>
