@@ -74,6 +74,7 @@ public class MenuController extends HttpServlet {
 	}
 	else if (action.equalsIgnoreCase("edit")) {
 			forward = EDIT;
+			//System.out.print("test");
 			int restaurantID = Integer.parseInt(request.getParameter("restaurantId"));
 			String itemName = request.getParameter("itemName");
 			Menu menu = dao.getMenuItemByRestaurantIDAndItemName(restaurantID, itemName);
@@ -98,6 +99,7 @@ public class MenuController extends HttpServlet {
 		 * This method retrieves all of the information entered in the form on
 		 * the addMenuItem.jsp or the editMenuItem.jsp pages.
 		 */
+		//System.out.print("test");
 		Menu menu = new Menu();
 		menu.setRestaurantName(request.getParameter("restaurantName"));
 		menu.setPrice(Double.parseDouble(request.getParameter("price")));
@@ -105,14 +107,14 @@ public class MenuController extends HttpServlet {
 		menu.setCategory(request.getParameter("category"));
 	
 		
-		String itemName = request.getParameter("restaurantName");
+		String itemName = request.getParameter("itemName");
 		/**
 		 * If the 'itemName' field in the form is empty, the menu item will be added
 		 * to the menu database
 		 */
 		if (itemName == null || itemName.isEmpty()) {
 			dao.addMenuItem(menu);
-			System.out.println("oops");
+			//System.out.println("oops");
 		} else {
 			/**
 			 * Otherwise, the field is already field and
