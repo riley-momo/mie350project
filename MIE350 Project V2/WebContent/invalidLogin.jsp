@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-<title>MIE350 Sample Web App - Invalid Login!</title>
+<title>Invalid Login!</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -22,11 +22,12 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+<link rel="stylesheet" type="text/css" href="css/mystyle2.css">
 </head>
 <body>
 
 	<%@ include file="navbar.jsp"%>
-
+<header class="intro-invalidLogin">
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
@@ -35,9 +36,15 @@
 			</div>
 			<div class="col-sm-8 text-left">
 
-				<h1>Invalid Login</h1>
+				<h1>Oops...</h1>
 
-				Please double-check your credentials and log in again.
+				<h2>You'll need to try that again</h2>
+				
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 
 			</div>
 			<div class="col-sm-2 sidenav">
@@ -45,7 +52,7 @@
 			</div>
 		</div>
 	</div>
-
+</header>
 	<%@ include file="footer.jsp"%>
 
 
