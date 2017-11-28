@@ -59,9 +59,13 @@
 			<div class="col-sm-8 text-left">
 				<h1>All Menu Items</h1>
 
-				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
+				The time is now <b><%=new java.util.Date()%></b>.
+				<br> 
+				<p>Click on a Restaurant Name to leave a rating!</p>
+				<br>
+				<br>
 
-		
+
 		<div class="table-responsive">  
 				<table border=1 class="sortable">
 					<thead>
@@ -72,13 +76,17 @@
 							<th>Calories</th>
 							<th>Category</th>
 							<th>Dietary Restrictions</th>
+							<th colspan=2>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${menus}" var="menu">
 							<tr>
 								<td align="center"><c:out value="${menu.getItemName()}" /></td>
-								<td align="center"><c:out value="${menu.getRestaurantName()}" /></td>
+								<td align="center"><a style="color:#a8e6e3;" href="RatingController?action=rate
+								&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
+									">
+								<c:out value="${menu.getRestaurantName()}" /></a></td>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								
 								<c:choose>
@@ -92,12 +100,19 @@
 								
 								<td align="center"><c:out value="${menu.getCategory()}" /></td>
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
+								
+																
+								<td align="center"><a class="btn btn-primary"
+									href="RatingController?action=rate
+									&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
+									">rate</a></td>
 
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 </div>
+
 				<br /> <br />
 			</div>
 			

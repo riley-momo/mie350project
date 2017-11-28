@@ -17,7 +17,7 @@ import com.mie.dao.RatingDao;
 import com.mie.model.Menu;
 import com.mie.model.User;
 
-public class RatingController {
+public class RatingController extends HttpServlet{
 	/**
 	 * This class only handles the restaurant RATING feature of the web app.
 	 *
@@ -50,13 +50,16 @@ public class RatingController {
 		 * This method handles directing the user to the restaurant rating page
 		 */
 		HttpSession session = request.getSession(true);
-		User user = (User) session.getAttribute("currentSessionUser");
-		int restaurantID =  Integer.parseInt(request.getParameter("restaurantToRate"));
 		
+		User user = (User) session.getAttribute("currentSessionUser");
+		String action = request.getParameter("action"); 
+		
+		if(action.equalsIgnoreCase("rate")) {		
+		int restaurantID =  Integer.parseInt(request.getParameter("restaurantId"));		
 		boolean isValid = dao.isValid(user, restaurantID);
 		RequestDispatcher view;
 		
-		if (isValid){
+		if (!isValid){
 			 view = request.getRequestDispatcher(RATE);
 		}
 		else {
@@ -69,6 +72,7 @@ public class RatingController {
 		 */
 		
 		view.forward(request, response);
+	}
 	}
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {

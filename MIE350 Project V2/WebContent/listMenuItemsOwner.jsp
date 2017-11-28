@@ -102,6 +102,7 @@
 									&itemName=<c:out value="${menu.getItemName()}"/>
 									&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
 									">Edit</a></td>
+									
 									<td align="center"><a class="btn btn-danger"
 									href="MenuController?action=delete
 									&itemName=<c:out value="${menu.getItemName()}"/>
