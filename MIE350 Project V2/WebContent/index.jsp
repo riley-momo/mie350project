@@ -36,17 +36,22 @@
 <header class="intro-home">
 <div class= "intro-body">
 <div class="container-fluid text-center">
-		<div class="row content">		
+		<div class="row content">	
+		<br>	
 			<h1>Welcome to NeXtmeal</h1>
 			<br>
-				<p style="font-size: 24px;">The application that lets you find
-				the right meal, at the right time!</p>
+			<br>
+				<h2 style="font-size: 24px;">The application that lets you find
+				the right meal, at the right time!</h2>
 			<br>
 			<br>
 			<br>
 			<br>
 			
-			
+			<br>
+			<br>
+			<br>
+			<br>
 			<form action="mealPlanner.jsp">
 			<input type="submit" 
 						class="btn btn-info" value="Let's Get Started!" 

@@ -45,9 +45,12 @@
 		String username = (String) session.getAttribute("userName");
 		String email= (String) session.getAttribute("email");
 	%>
-<header class="intro-addMenuItem">
+<header class="intro-editMenuItem">
 	<div class="container-fluid text-center">
 		<div class="row content">
+		<div class="col-sm-2 sidenav">
+				<!-- You can put left sidebar links here if you want to. -->
+			</div>
 			<div class="col-sm-8 text-left">
 				<h1 style="font-size:60px;">Edit A Menu Item</h1>
 			
@@ -59,20 +62,20 @@
 				
 <!-- **********************Backend Info that needs to be updated******************************* -->
 				<form method="POST" action='MenuController' name="frmAddItem">
-					<input type="hidden" name="edit" value="<c:out value="${edit}" />">
-					Restaurant ID*: <input type="text" readonly="readonly"
+					<p><input type="hidden" name="edit" value="<c:out value="${edit}" />">
+					Restaurant ID*:</p> <input type="text" readonly="readonly"
 						name="restaurantId" value="<c:out value="${menu.restaurantID}" />"><br>
-					Restaurant Name*: <input type="text" readonly="readonly"
+					<p>Restaurant Name*:</p> <input type="text" readonly="readonly"
 						name="restaurantName" value="<c:out value="${menu.restaurantName}" />"><br>
-					Item Name*: <input type="text" readonly = "readOnly" 
+					<p>Item Name*:</p> <input type="text" readonly = "readOnly" 
 					name="itemName" value="<c:out value="${menu.itemName}" />"><br>
-					Price (required) : <input type="text" name="price" pattern = "^\d+(.\d{1,2})?$" minLength= "1"
+					<p>Price (required) :</p> <input type="text" name="price" pattern = "^\d+(.\d{1,2})?$" minLength= "1"
 						required = "required" value="<c:out value="${menu.price}" />"><br>					
-					Calories: <input type="number" name="calories" max="99999" min="0"
+					<p>Calories:</p> <input type="number" name="calories" max="99999" min="0"
 						value="<c:out value="${menu.calories}" />"><br> <br>
-					Category (required) : <input type="text" name="category" minLength = "1" maxlength="60"
+					<p>Category (required) :</p> <input type="text" name="category" minLength = "1" maxlength="60"
 						required = "required" value="<c:out value="${menu.category}" />"><br> <br>
-					Dietary Restrictions: <input type="text" name="dietary" maxlength="60"
+					<p>Dietary Restrictions:</p> <input type="text" name="dietary" maxlength="60"
 						value="<c:out value="${menu.dietary}" />"><br> <br>
 					<input type="submit" class="btn btn-info" value="Submit" />
 				</form>

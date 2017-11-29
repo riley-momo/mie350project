@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-<title>All Menu Items</title>
+<title>Recommendations -NeXtMeal</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -36,7 +36,7 @@
 				<!-- You can put left sidebar links here if you want to. -->
 			</div>
 			<div class="col-sm-8 text-left">
-				<h1>All Menu Items</h1>
+				<h1>Here's what we found...</h1>
 
 				The time is now <b><%=new java.util.Date()%></b>.<br> <br>
 

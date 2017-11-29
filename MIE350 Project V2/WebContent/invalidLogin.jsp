@@ -30,16 +30,26 @@
 <header class="intro-invalidLogin">
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<!-- You can put left sidebar links here if you want to. -->
-
-			</div>
+			
 			<div class="col-sm-8 text-left">
 
 				<h1>Oops...</h1>
 
-				<h2>You'll need to try that again</h2>
+<br>
+<br>
+				<h2>We couldn't find your account...</h2>
 				
+				<br>
+				<form action="login.jsp">
+				<input type="submit" 
+						class="btn btn-info" value="Try Again" style="background-color: #a94442; border-color: rgba(0,0,0,.0001);width:30%; ">
+				</form>
+				<br>
+				<br>
+				<form action="createAccount.jsp">
+				<input type="submit" 
+						class="btn btn-info" value="Create Profile" style="background-color: #a94442; border-color: rgba(0,0,0,.0001);width:30%; ">
+				</form>
 				<br>
 				<br>
 				<br>

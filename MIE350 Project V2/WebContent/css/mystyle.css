@@ -109,7 +109,19 @@
     background-size: cover;
 
 }
+.intro-editMenuItem {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 50px 0;
+    text-align: center;
+    color: #CCC;
+    background: url('../img/foodDarkFlip.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 
+}
 .intro-invalidLogin{
 	isplay: table;
     width: 100%;

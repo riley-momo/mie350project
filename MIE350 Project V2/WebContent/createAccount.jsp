@@ -59,13 +59,7 @@
 				
 								
 				<br/> 
-				<p style="font-size:14px";>For demonstration purposes, please use the following
-				credentials:
-				<br>
-					Email: jeff@fake.com
-				<br>
-					Password: 123456</li>
-				</p>				
+						
 			</div>
 		</div>
 	</div>

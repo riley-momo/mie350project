@@ -58,13 +58,24 @@
 				
 								
 				<br/> 
-				<p style="font-size:14px";>For demonstration purposes, please use the following
+				<p style="font-size:14px";>For demonstration purposes, owners use the following
 				credentials:
 				<br>
 					Email: jeff@fake.com
 				<br>
 					Password: 123456</li>
 				</p>				
+				
+				<br>
+				<p style="font-size:14px";>For demonstration purposes, students use the following
+				credentials:
+				<br>
+					Email: bob@fake.com
+				<br>
+					Password: wow</li>
+				</p>	
+				
+				
 			</div>
 		</div>
 	</div>
