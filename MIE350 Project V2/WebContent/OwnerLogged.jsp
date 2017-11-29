@@ -75,11 +75,6 @@
 			<br>
 			<br>
 					
-			<ul style="color:black;">
-					<li ><b>Modify</b> your account details</li>
-			</ul>
-				<input type="button" 
-						class="btn btn-info" value="Account Settings" style="font-size: 18px;" >
 				
 				
 <br>

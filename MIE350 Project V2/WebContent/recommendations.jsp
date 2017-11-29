@@ -47,11 +47,12 @@
 						<tr>
 							<th>Name</th>
 							<th>Restaurant Name</th>
+							<th>Restaurant Rating</th>
 							<th>Price ($)</th>
 							<th>Calories</th>
 							<th>Category</th>
 							<th>Dietary Restrictions</th>
-							<th>Restaurant Rating</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -59,6 +60,14 @@
 							<tr>
 								<td align="center"><c:out value="${menu.getItemName()}" /></td>
 								<td align="center"><c:out value="${menu.getRestaurantName()}" /></td>
+										<c:choose>
+									<c:when test = "${menu.getRestaurantRating()==0}">
+										<td align="center"><c:out value="" /></td>
+									</c:when>
+									<c:otherwise>
+										<td align="center"><c:out value="${menu.getRestaurantRating()}" /></td>
+									</c:otherwise>
+								</c:choose>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								
 								<c:choose>
@@ -72,14 +81,7 @@
 								
 								<td align="center"><c:out value="${menu.getCategory()}" /></td>
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
-									<c:choose>
-									<c:when test = "${menu.getRestaurantRating()==0}">
-										<td align="center"><c:out value="" /></td>
-									</c:when>
-									<c:otherwise>
-										<td align="center"><c:out value="${menu.getRestaurantRating()}" /></td>
-									</c:otherwise>
-								</c:choose>
+							
 								
 							</tr>
 						</c:forEach>
