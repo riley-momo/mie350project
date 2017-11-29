@@ -56,13 +56,13 @@ public class RatingDao {
 			stmt.execute(query);
 			
 			//Get the average rating from the rating table
-			query = "SELECT AVG(Rating) AS avgRating FROM Rating WHERE RestaurantID = " + restaurantID + ";";
+			query = "SELECT AVG(RatingDouble) AS avgRating FROM (SELECT Rating*1.00 AS RatingDouble FROM Rating WHERE RestaurantID = " + restaurantID + ")";
 			ResultSet rs = stmt.executeQuery(query);
 			rs.next();
-			rating = rs.getInt("avgRating");	
+			double avgRating = rs.getDouble("avgRating");	
 			
 			//Update the restaurant table with the new rating
-			query = "UPDATE Restaurant SET Rating = " + rating + " WHERE RestaurantID = " + restaurantID + ";";
+			query = "UPDATE Restaurant SET Rating = " + avgRating + " WHERE RestaurantID = " + restaurantID + ";";
 			stmt.execute(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
