@@ -16,6 +16,7 @@ public class Menu {
 	private String category;
 	private String dietary;
 	private int promoKey;
+	private int restaurantRating;
 	
 //	**
 	private String ownerEmail;
@@ -88,10 +89,12 @@ public class Menu {
 	public void setPromoKey(int promoKey){
 		this.promoKey = promoKey;
 	}
-
-	@Override
-	public String toString() {
-	//TODO
-		return "";
+	
+	public int getRestaurantRating() {
+		return restaurantRating;
+	}
+	
+	public void setRestaurantRating(int restaurantRating) {
+		this.restaurantRating = restaurantRating;
 	}
 }

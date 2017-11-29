@@ -75,6 +75,7 @@
 							<th>Calories</th>
 							<th>Category</th>
 							<th>Dietary Restrictions</th>
+							<th>Restaurant Rating</th>
 							<th colspan=2>Action</th>
 						</tr>
 					</thead>
@@ -96,6 +97,14 @@
 								
 								<td align="center"><c:out value="${menu.getCategory()}" /></td>
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
+									<c:choose>
+									<c:when test = "${menu.getRestaurantRating()==0}">
+										<td align="center"><c:out value="" /></td>
+									</c:when>
+									<c:otherwise>
+										<td align="center"><c:out value="${menu.getRestaurantRating()}" /></td>
+									</c:otherwise>
+								</c:choose>
 								
 								<td align="center"><a class="btn btn-warning"
 									href="MenuController?action=edit
