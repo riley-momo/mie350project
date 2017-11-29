@@ -40,13 +40,14 @@
 
 				<form action = "AccountCreationController">
 				<p style="font-size: 28px;">What's your name?</p>
-				<input type="text" name="nm" maxlength="20" style="font-size: 34px; margin-left:inherit; width:30%" />
+				<input type="text" name="nm" maxlength="30" required= "required" style="font-size: 34px; margin-left:inherit; width:30%" />
 				<br>
 				<p style="font-size: 28px;">Enter an Email:</p>
-				<input type="text" name="em" maxlength="20" style="font-size: 34px; margin-left:inherit; width:30%" />
+				<input type="text" name="em" maxlength="40" required= "required" 
+				pattern = "^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" style="font-size: 34px; margin-left:inherit; width:30%" />
 				<br>
 				<p style="font-size: 28px;">Set Password: </p>
-				<input	type="password" name="pw" maxlength="20" style="font-size: 25px; margin-left:inherit; width: 30%"/>
+				<input	type="password" name="pw" maxlength="20" required= "required" style="font-size: 25px; margin-left:inherit; width: 30%"/>
 				<br>
 				
 				<input type="submit" 

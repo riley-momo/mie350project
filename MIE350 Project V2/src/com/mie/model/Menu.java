@@ -16,7 +16,7 @@ public class Menu {
 	private String category;
 	private String dietary;
 	private int promoKey;
-	private int restaurantRating;
+	private double restaurantRating;
 	
 //	**
 	private String ownerEmail;
@@ -90,11 +90,11 @@ public class Menu {
 		this.promoKey = promoKey;
 	}
 	
-	public int getRestaurantRating() {
+	public double getRestaurantRating() {
 		return restaurantRating;
 	}
 	
-	public void setRestaurantRating(int restaurantRating) {
+	public void setRestaurantRating(double restaurantRating) {
 		this.restaurantRating = restaurantRating;
 	}
 }
