@@ -50,7 +50,7 @@ public class RatingDao {
 		try {
 			//Insert the user's rating in to the rating table
 			String email = student.getEmail();
-			String query = "INSERT INTO Rating VALUES (" + email + ", " + restaurantID
+			String query = "INSERT INTO Rating(Email, RestaurantID, Rating) VALUES ('" + email + "', " + restaurantID
 					+ ", " + rating + ");";
 			Statement stmt = connection.createStatement();
 			stmt.execute(query);
