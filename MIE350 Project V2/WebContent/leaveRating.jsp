@@ -5,11 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Check to see if the user is logged in. Otherwise, redirect back to the login page.-->
 <%
- 	session = request.getSession();
- 	System.out.println(session);
-//  	if (session.getAttribute("userName") == null) {
-//  		response.sendRedirect("login.jsp");
-//  	}
+	session = request.getSession();
+	System.out.println(session);
+	if (session.getAttribute("userName") == null) {
+		response.sendRedirect("login.jsp");
+	}
 	
 %>
 <html lang="en">
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-	<%@ include file="navbar_loggedin.jsp"%>
+	<%@ include file="navbar_Studentloggedin.jsp"%>
 
 <%
  		User user = (User) session.getAttribute("currentSessionUser");
@@ -64,9 +64,10 @@
 
 				
 				<h4 style="color:white;">	Rating (required): </h4>
-		<form class="form-inline" role="form">
+		<form class="form-inline" role="form" method= "POST" action = "RatingController" name = "frmRateItem">
+  		<input type="hidden" name="restaurantToRate" value="<c:out value="${menu.restaurantID}" />">
   		<div class="form-group">
-   	 <select class="form-control">
+   	 <select class="form-control" name = "rating">
   					<option value="1">1 Star</option>
  					<option value="2">2 Star</option>
   					<option value="3">3 Star</option>

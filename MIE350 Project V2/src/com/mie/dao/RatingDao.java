@@ -26,20 +26,21 @@ public class RatingDao {
 	}
 	
 	public boolean isValid(User user, int restaurantID) {
-		boolean result = false;
+		//default value in case of SQLException or other error - will direct user to invalid page
+		boolean result = true;
 		try {
 			String email = user.getEmail();
 			//check if the rating exists
-			String query = "SELECT * FROM Rating WHERE email = " + email + " AND RestaurantID = " + restaurantID;
+			//String query = "test";
+			String query = "SELECT * FROM Rating WHERE Email = '" + email + "' AND RestaurantID = " + restaurantID;
 			Statement stmt;
 			stmt = connection.createStatement();
-			stmt.execute(query);
 			ResultSet rs = stmt.executeQuery(query);
 			result = rs.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result;
+		return !result;
 	}
 	
 	public void addRating(User student, int restaurantID, int rating) {

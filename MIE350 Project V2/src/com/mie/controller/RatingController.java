@@ -17,7 +17,7 @@ import com.mie.dao.RatingDao;
 import com.mie.model.Menu;
 import com.mie.model.User;
 
-public class RatingController extends HttpServlet{
+public class RatingController extends HttpServlet {
 	/**
 	 * This class only handles the restaurant RATING feature of the web app.
 	 *
@@ -29,12 +29,12 @@ public class RatingController extends HttpServlet{
 	 * 
 	 */
 	//test
+	private RatingDao dao;
 	private static final long serialVersionUID = 1L;
 	private static String RATE = "/leaveRating.jsp";
 	private static String INVALID_RATE = "/invalidRating.jsp";
-	private static String RATE_SUCCESS = "/ratingConfirmation.jsp";
-	private RatingDao dao;
-	
+	private static String SEARCH_MENU_ITEMS = "/listMenuItemsStudent.jsp";
+	private static String LOGIN = "/login.jsp";
 
 	/**
 	 * Constructor for this class.
@@ -50,29 +50,43 @@ public class RatingController extends HttpServlet{
 		 * This method handles directing the user to the restaurant rating page
 		 */
 		HttpSession session = request.getSession(true);
-		
-		User user = (User) session.getAttribute("currentSessionUser");
-		String action = request.getParameter("action"); 
-		
-		if(action.equalsIgnoreCase("rate")) {		
-		int restaurantID =  Integer.parseInt(request.getParameter("restaurantId"));		
-		boolean isValid = dao.isValid(user, restaurantID);
 		RequestDispatcher view;
 		
-		if (!isValid){
-			 view = request.getRequestDispatcher(RATE);
+		if ((String)request.getSession().getAttribute("email") == null 
+				|| ((String)request.getSession().getAttribute("email")).isEmpty()){
+			view= request.getRequestDispatcher(LOGIN);
 		}
 		else {
-			view = request.getRequestDispatcher(INVALID_RATE);
+			User user = (User) session.getAttribute("currentSessionUser");
+			user.setEmail((String)session.getAttribute("email"));
+			String action = request.getParameter("action"); 
+			
+			if(action.equalsIgnoreCase("rate")) {		
+				int restaurantID =  Integer.parseInt(request.getParameter("restaurantId"));		
+				boolean isValid = dao.isValid(user, restaurantID);
+				
+			
+				if (isValid){
+					String restaurantName = request.getParameter("restaurantName");
+					Menu menu = new Menu();
+					menu.setRestaurantID(restaurantID);
+					menu.setRestaurantName(restaurantName);
+					request.setAttribute("menu", menu); 
+					view = request.getRequestDispatcher(RATE);
+				}
+				else {
+					view = request.getRequestDispatcher(INVALID_RATE);
+				}
+				
+				
+				/**
+				Redirect to appropriate page based on valid/invalid result
+				 */
+				
+				view.forward(request, response);
+			}
+		
 		}
-		
-		
-		/**
-		Redirect to appropriate page based on valid/invalid result
-		 */
-		
-		view.forward(request, response);
-	}
 	}
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -80,17 +94,28 @@ public class RatingController extends HttpServlet{
 		 * This method handles rating restaurants
 		 */
 		HttpSession session = request.getSession(true);
-		User user = (User) session.getAttribute("currentSessionUser");
-		int restaurantID =  Integer.parseInt(request.getParameter("restaurantToRate"));
-		int rating = Integer.parseInt(request.getParameter("rating"));
 		RequestDispatcher view;
-		if (rating > 5) {
-			view = request.getRequestDispatcher(INVALID_RATE);
+		
+		if ((String)request.getSession().getAttribute("email") == null 
+				|| ((String)request.getSession().getAttribute("email")).isEmpty()){
+			view= request.getRequestDispatcher(LOGIN);
 		}
 		else {
-			view= request.getRequestDispatcher(RATE_SUCCESS);
-			dao.addRating(user, restaurantID, rating);
+			User user = (User) session.getAttribute("currentSessionUser");
+			int restaurantID =  Integer.parseInt(request.getParameter("restaurantToRate"));
+			int rating = Integer.parseInt(request.getParameter("rating"));
+			
+			if (rating > 5 || rating < 0) {
+				view = request.getRequestDispatcher(INVALID_RATE);
+			}
+			else {
+				view= request.getRequestDispatcher(SEARCH_MENU_ITEMS);
+				dao.addRating(user, restaurantID, rating);
+				MenuDao menuDao = new MenuDao();
+				request.setAttribute("menus", menuDao.getAllItems());
+			}
 		}
+		
 		view.forward(request, response);
 	}
 

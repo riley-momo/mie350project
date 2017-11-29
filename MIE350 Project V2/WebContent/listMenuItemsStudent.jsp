@@ -76,16 +76,15 @@
 							<th>Calories</th>
 							<th>Category</th>
 							<th>Dietary Restrictions</th>
-							<th colspan=2>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${menus}" var="menu">
 							<tr>
 								<td align="center"><c:out value="${menu.getItemName()}" /></td>
-								<td align="center"><a style="color:#a8e6e3;" href="RatingController?action=rate
+								<td align="center"><a style="color:#a8e6e3;" href="/mie350webapp/RatingController?action=rate
 								&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
-									">
+									&restaurantName=<c:out value="${menu.getRestaurantName()}"/>">
 								<c:out value="${menu.getRestaurantName()}" /></a></td>
 								<td align="center"><c:out value="${menu.getPrice()}" /></td>
 								
@@ -102,11 +101,7 @@
 								<td align="center"><c:out value="${menu.getDietary()}" /></td>
 								
 																
-								<td align="center"><a class="btn btn-primary"
-									href="RatingController?action=rate
-									&restaurantId=<c:out value="${menu.getRestaurantID()}"/>
-									">rate</a></td>
-
+								
 							</tr>
 						</c:forEach>
 					</tbody>
