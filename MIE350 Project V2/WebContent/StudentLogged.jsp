@@ -59,11 +59,10 @@
 					
 				<p style="color:black;"> You are now logged in.</p>
 
-				<h3 style="color:black;">Feel free to</h3>
-				<ul style="color:black;">
-					<li><b>Rate</b> restaurants!</li>
-					
-				</ul>
+				<h3 style="color:black;">You can now rate any restaurant!</h3>
+				
+				
+			<a href="/mie350webapp/MenuController?action=searchMenuItems" class="buttonList" >Rate!</a>
 				
 <br>
 <br>

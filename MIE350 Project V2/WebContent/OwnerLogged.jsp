@@ -69,7 +69,6 @@
 					<li><b>Modify</b> menu item information</li>
 			</ul>
 			
-			
 			<a href="/mie350webapp/MenuController?action=listOwnersItems" class="buttonList" >My Menu</a>
 			<br>
 			<br>
