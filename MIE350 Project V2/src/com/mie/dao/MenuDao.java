@@ -122,7 +122,7 @@ public class MenuDao {
 				menu.setCalories(rs.getInt("Calories"));
 				menu.setCategory(rs.getString("Category"));
 				menu.setDietary(rs.getString("DietaryRestrictions"));
-				menu.setRestaurantRating(rs.getInt("Rating"));
+				menu.setRestaurantRating(rs.getDouble("Rating"));
 				menus.add(menu);
 			}
 		} catch (SQLException e) {
@@ -239,7 +239,7 @@ public class MenuDao {
 				menu.setCalories(rs.getInt("Calories"));
 				menu.setCategory(rs.getString("Category"));
 				menu.setDietary(rs.getString("DietaryRestrictions"));
-				menu.setRestaurantRating(rs.getInt("Rating"));
+				menu.setRestaurantRating(rs.getDouble("Rating"));
 				menus.add(menu);
 			}
 		} catch (SQLException e) {
@@ -269,7 +269,7 @@ public class MenuDao {
 				menu.setCategory(rs.getString("Category"));
 				menu.setDietary(rs.getString("DietaryRestrictions"));
 				menu.setPromoKey(rs.getInt("PromoKey"));
-				menu.setRestaurantRating(rs.getInt("Rating"));
+				menu.setRestaurantRating(rs.getDouble("Rating"));
 				menus.add(menu);
 			}
 		} catch (SQLException e) {
@@ -299,7 +299,7 @@ public class MenuDao {
 				menu.setPrice(rs.getDouble("Price"));
 				menu.setCategory(rs.getString("Category"));
 				menu.setDietary(rs.getString("DietaryRestrictions"));
-				menu.setRestaurantRating(rs.getInt("Rating"));
+				menu.setRestaurantRating(rs.getDouble("Rating"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
