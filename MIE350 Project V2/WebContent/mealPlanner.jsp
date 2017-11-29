@@ -59,7 +59,7 @@
 							<div class="paneldiv">
 									<input type="radio" name="priceoption"  value="p1" style="display:inline;width:8%" checked >
 									<label for="firstname" class="control-label">Less than $</label>
-									<input type="number" class="form-control" name="p1price" placeholder="less than" style="display:inline;width:20%" value="" min="0">
+									<input type="number" class="form-control" name="p1price" min = "0" max = "100000" placeholder="less than" style="display:inline;width:20%" value="" min="0">
 							</div>
 							<div class="paneldiv">
 									<input type="radio" name="priceoption" value="p2" style="display:inline;width:8%"  >
@@ -89,7 +89,7 @@
 							<div class="paneldiv">
 								<input type="radio" name="calories" value="c1" style="display:inline;width:8%" > 
 								<label for="firstname" class="control-label">Less than </label>
-								<input type="number" class="form-control" name="c1val" placeholder="Less than" style="display:inline;width:50%" value="">
+								<input type="number" max = "50000" class="form-control" name="c1val" placeholder="Less than" style="display:inline;width:50%" value="">
 							</div>
 							<div class="paneldiv">
 								<input type="radio" name="calories"  value="c2" style="display:inline;width:8%" checked> 
