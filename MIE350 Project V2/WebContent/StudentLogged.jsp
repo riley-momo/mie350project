@@ -54,12 +54,14 @@
 <%-- 		<%@ include file="sidebar_loggedin.jsp"%> --%>
 			<div class="col-sm-8 text-left">
 
-				<h1 style="color:black; font-size: 45px;">
+				<h1 style="color:black; font-size: 55px;">
 					Welcome back, <%=username%>. </h1>
-					
-				<p style="color:black;"> You are now logged in.</p>
+					<br>
+<br>
+<br>
+				<p style="color:black; font-size:25px;"> You are now logged in.</p>
 
-				<h3 style="color:black;">You can now rate any restaurant!</h3>
+				<h3 style="color:black;font-size:35px;">You can now rate any restaurant!</h3>
 				
 				
 			<a href="/mie350webapp/MenuController?action=searchMenuItems" class="buttonList" >Rate!</a>
@@ -70,6 +72,18 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
 
 
 			</div>
